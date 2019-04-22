@@ -12,6 +12,7 @@ public class Default {
 
 	public static void main(String[] args) 
 	{		
+ 
 //		IFactory factory = AccountBuilder.getFactoryAccount("");
 //		ICustomer customer = factory.createCustomer("");
 //
@@ -34,6 +35,7 @@ public class Default {
 //		IReport report = new Report(customers);
 //		report.generateReport(new Date());	
 //		System.out.println("Executed");
+ 
 	}
 
 	public void createAccount(String type, String customer) {
@@ -44,8 +46,7 @@ public class Default {
 
 	}
 
-	public void generateReports() 
-	{
+	public void generateReports() {
 
 	}
 

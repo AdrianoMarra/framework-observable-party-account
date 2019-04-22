@@ -1,14 +1,18 @@
 package framework;
 
 import java.util.ArrayList;
+<<<<<<< Updated upstream
 import java.util.HashMap;
+=======
+import java.util.Date;
+>>>>>>> Stashed changes
 import java.util.List;
 
 public class Customer implements ICustomer {
 
 	List<IAccount> accountList = new ArrayList<>();
 	
-	private String name;
+	private String name; 
 	private String accNum;
 	private String street;
 	private String city;
@@ -23,12 +27,11 @@ public class Customer implements ICustomer {
 		city = customerData.get("city");
 		state = customerData.get("state");
 		zip = customerData.get("zip");
-		email = customerData.get("email");
+		email = customerData.get("email"); 
 	}
 
 	public void add(Account acc) 
-	{
-		
+	{		
 		accountList.add(acc);		
 	}
 
