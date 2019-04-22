@@ -3,13 +3,13 @@ package bank.model;
 import java.util.HashMap;
 import java.util.List;
 
+import framework.Customer;
 import framework.IAccount;
-import framework.ICustomer;
 
-public class Company implements ICustomer {
+public class Company extends Customer {
 
 	public Company(HashMap<String, String> customerData) {
-		// TODO Auto-generated constructor stub
+		super(customerData);
 	}
 
 	@Override

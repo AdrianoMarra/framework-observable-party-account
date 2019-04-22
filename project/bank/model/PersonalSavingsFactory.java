@@ -15,8 +15,8 @@ public class PersonalSavingsFactory extends CustomerAccountFactory {
 	}
 
 	@Override
-	public IAccount createAccount(String accNumber) {
-		return new SavingsAccount();
+	public IAccount createAccount(HashMap<String, String> accountData) {
+		return new SavingsAccount(accountData);
 	}
 	
 }

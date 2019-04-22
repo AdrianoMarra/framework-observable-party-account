@@ -29,8 +29,9 @@ public class Main {
 		customData.put("email", "adriano@test");
 
 		currentFactory = BankCustomerAccountsBuilder.getFactoryAccount("personalCheckings");
-		IAccount acc = currentFactory.createAccount(customData.get("accNum"));
+		IAccount acc = currentFactory.createAccount(customData);
 		ICustomer customer = currentFactory.createCustomer(customData);
+		customer.addAccount(acc);
 	}
 }
 

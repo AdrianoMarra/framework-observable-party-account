@@ -8,15 +8,14 @@ import framework.ICustomer;
 
 public class CompanySavingsFactory extends CustomerAccountFactory {
 	
-
 	@Override
 	public ICustomer createCustomer(HashMap<String, String> customerData) {
 		return new Company(customerData);
 	}
 
 	@Override
-	public IAccount createAccount(String accNumber) {
-		return new SavingsAccount();
+	public IAccount createAccount(HashMap<String, String> accountData) {
+		return new SavingsAccount(accountData);
 	}
 	
 }

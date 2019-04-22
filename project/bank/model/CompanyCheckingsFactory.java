@@ -14,8 +14,8 @@ public class CompanyCheckingsFactory extends CustomerAccountFactory {
 	}
 
 	@Override
-	public IAccount createAccount(String accNumber) {
-		return new CheckingsAccount(accNumber);
+	public IAccount createAccount(HashMap<String, String> accountData) {
+		return new CheckingsAccount(accountData);
 	}
 	
 }

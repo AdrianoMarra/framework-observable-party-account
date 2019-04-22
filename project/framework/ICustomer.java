@@ -5,7 +5,7 @@ import java.util.List;
 public interface ICustomer {
 	List<IAccount> getListAccount();
 
-	void add(Account acc);
+	void addAccount(IAccount acc);
 
 	List<IAccount> getAccountList();
 
