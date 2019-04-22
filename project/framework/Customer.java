@@ -14,7 +14,6 @@ public class Customer implements ICustomer {
 	private String city;
 	private String state;
 	private String zip;
-	private String birthdate;
 	private String email;
 		
 	public Customer(HashMap<String, String> customerData) {
@@ -24,7 +23,6 @@ public class Customer implements ICustomer {
 		city = customerData.get("city");
 		state = customerData.get("state");
 		zip = customerData.get("zip");
-		birthdate = customerData.get("birthdate");
 		email = customerData.get("email");
 	}
 
