@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Account implements IAccount {
 	private List<ITransaction> transactions = new ArrayList<>();
-
+     
 	@Override
 	public void addInterest() {
 
