@@ -1,4 +1,4 @@
-package bank;
+package bank.bankUI;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
