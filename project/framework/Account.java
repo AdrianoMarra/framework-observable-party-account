@@ -12,7 +12,31 @@ public class Account implements IAccount {
 
 	public Account(HashMap<String, String> map) {
 		this.accNumber = map.get("accNumber");
-		this.balance = Double.parseDouble(map.get("balance"));
+		this.balance = 0;
+	}
+
+	public List<ITransaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<ITransaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public String getAccNumber() {
+		return accNumber;
+	}
+
+	public void setAccNumber(String accNumber) {
+		this.accNumber = accNumber;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 
 	@Override
