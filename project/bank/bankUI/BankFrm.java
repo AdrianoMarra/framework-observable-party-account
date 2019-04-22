@@ -9,8 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
 /**
- * A basic JFC based application.
  **/
+* A basic JFC based application.
 public class BankFrm extends javax.swing.JFrame
 {
     /****

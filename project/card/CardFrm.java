@@ -149,7 +149,7 @@ public class CardFrm extends javax.swing.JFrame
 	{
 		// to do: code goes here.
 			 
-		BankFrm_windowClosing_Interaction1(event);
+		BankFrm+_windowClosing_Interaction1(event);
 	}
 
 	void BankFrm_windowClosing_Interaction1(java.awt.event.WindowEvent event) {
@@ -207,9 +207,7 @@ public class CardFrm extends javax.swing.JFrame
             model.addRow(rowdata);
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount=false;
-        }
-
-       
+        }       
         
     }
 
