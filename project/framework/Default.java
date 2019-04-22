@@ -14,6 +14,7 @@ public class Default {
 	{		
 		IFactory factory = AccountBuilder.getFactoryAccount("");
 		ICustomer customer = factory.createCustomer("");
+
 		customers.add(customer);
 		
 		accs.add(customer.getListAccount().get(customer.getListAccount().size() - 1));

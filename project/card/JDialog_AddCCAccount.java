@@ -6,7 +6,7 @@ package card;
 import java.awt.*;
 import javax.swing.*;
 
-import bank.BankFrm;
+import bank.bankUI.BankFrm;
 
 public class JDialog_AddCCAccount extends javax.swing.JDialog
 {
