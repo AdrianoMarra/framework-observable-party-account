@@ -26,7 +26,7 @@ public class Customer implements ICustomer {
 		email = customerData.get("email");
 	}
 
-	public void add(Account acc) {
+	public void addAccount(Account acc) {
 		accountList.add(acc);
 	}
 
