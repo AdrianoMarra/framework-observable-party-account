@@ -11,10 +11,9 @@ public class TransactionManager implements ITransactionManager {
 		this.currentTransaction = currentTransaction;
 	}
 
-	public void execute(IAccount account) {
-		if (currentTransaction.executeTransaction(account)) {
+	public void execute() {
+		if (currentTransaction.executeTransaction()) {
 			transactionHistory.push(currentTransaction);
-			account.addTransaction(currentTransaction);			
 		}
 	}
 

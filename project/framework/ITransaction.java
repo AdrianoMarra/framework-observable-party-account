@@ -1,6 +1,8 @@
 package framework;
 public interface ITransaction {
 
-	public abstract boolean executeTransaction(IAccount account);
+	public boolean executeTransaction();
+	public IAccount getAccount();
+	public void setAccount(IAccount account);
 
 }

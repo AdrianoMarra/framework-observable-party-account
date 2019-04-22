@@ -1,7 +1,7 @@
 package framework;
 public interface ITransactionManager 
 {
-	public void execute(IAccount account);
+	public void execute();
 	
 	public void setTransaction(ITransaction transaction);
 

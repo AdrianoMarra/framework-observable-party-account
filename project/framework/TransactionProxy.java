@@ -6,13 +6,13 @@ public class TransactionProxy implements ITransaction {
 
 	public TransactionProxy(ITransaction transaction) {
 		this.transaction = transaction;
+		
 	}
-
- 
+	
 	@Override
-	public boolean executeTransaction(IAccount account) 
+	public boolean executeTransaction() 
 	{		
-		transaction.executeTransaction(account);
+		transaction.executeTransaction();
 		Post();		
 		System.out.println("Transaction Proxy Executed");		
 		return true;
@@ -21,6 +21,17 @@ public class TransactionProxy implements ITransaction {
 	public void Post() 
 	{
 		IEmailManager.sendEmail("");		
+	}
+
+	@Override
+	public IAccount getAccount() {
+		return transaction.getAccount();
+	}
+
+	@Override
+	public void setAccount(IAccount account) {
+		transaction.setAccount(account);
+		
 	}
 
 }

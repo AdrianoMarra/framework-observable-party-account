@@ -7,24 +7,26 @@ import java.util.List;
 public class Default {
 
 	public static ITransactionManager transactionManager = new TransactionManager();
-
 	public static List<IAccount> accs = new ArrayList<>();
 	public static List<ICustomer> customers = new ArrayList<>();
 
 	public static void main(String[] args) 
 	{		
-		IFactory f = AccountBuilder.getFactoryAccount("");
-		ICustomer c = f.createCustomer("");
-		customers.add(c);
-
-		accs.add(c.getListAccount().get(c.getListAccount().size() - 1));
+		IFactory factory = AccountBuilder.getFactoryAccount("");
+		ICustomer customer = factory.createCustomer("");
+		customers.add(customer);
 		
-		ITransaction transaction = new Transaction();
-		ITransaction proxy = new TransactionProxy(transaction);
-
-		transactionManager.setTransaction(proxy);
-		transactionManager.execute(c.getListAccount().get(0));
-				
+		accs.add(customer.getListAccount().get(customer.getListAccount().size() - 1));
+		
+		//Proxy pattern
+		ITransaction transaction = new Transaction(customer.getListAccount().get(0));
+		transaction = new TransactionProxy(transaction);
+		
+		// Command pattern
+		transactionManager.setTransaction(transaction);
+		transactionManager.execute();
+		
+		// Observer pattern		
 		IInterestManager interestManager = new InterestManager(accs);
 		interestManager.notifyAccounts();
 		
