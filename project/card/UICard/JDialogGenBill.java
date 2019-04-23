@@ -53,7 +53,9 @@ public class JDialogGenBill extends javax.swing.JDialog {
         billstring += "Total Charges = $ 150.00\r\n";
         billstring += "New balance = $ 313.53\r\n";
         billstring += "Total amount due = $ 34.49\r\n";
-        JTextField1.setText(billstring);
+        String teste = "teste";
+
+        JTextField1.setText(teste);
         //}}
 
         //{{REGISTER_LISTENERS
