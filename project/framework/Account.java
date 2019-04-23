@@ -10,12 +10,11 @@ public class Account implements IAccount {
 
 	private String accNumber;
 	private double balance;
-	private double interest = 0;
+	private double interest = 2;
 
 	public Account(HashMap<String, String> map) {
 		this.accNumber = map.get("accNumber");
-		this.interest = Double.parseDouble(map.get("interest"));
-		this.balance = 0;
+ 		this.balance = 0;
 	}
 
 	public List<ITransaction> getTransactions() {
@@ -43,14 +42,16 @@ public class Account implements IAccount {
 	}
 
 	@Override
-	public void addInterest() {
+	public void addInterest() { 
+		double newBalance = ((interest / 100) * balance) + balance;
+		this.balance = newBalance;
 	}
-	
+
 	@Override
 	public void setInterest(double interest) {
 		this.interest = interest;
 	}
-	
+
 	@Override
 	public double getInterest() {
 		return this.interest;

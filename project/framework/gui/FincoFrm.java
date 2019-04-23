@@ -26,7 +26,7 @@ import framework.AccountBuilder;
 import framework.Customer;
 import framework.IAccount;
 import framework.ICustomer;
-import framework.IFactory; 
+import framework.IFactory;
 
 public class FincoFrm extends javax.swing.JFrame {
 
@@ -209,6 +209,7 @@ public class FincoFrm extends javax.swing.JFrame {
 			customer.addAccount(account);
 			customerList.add(customer);
 			accountList.add(account);
+			accountsManager.addAccount(account);
 
 			model.addRow(
 					new Object[] { customer.getName(), account.getAccNumber(), Double.toString(account.getBalance()) });
@@ -225,6 +226,19 @@ public class FincoFrm extends javax.swing.JFrame {
 
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
 		accountsManager.notifyAccounts();
+
+		for (int i = 0; i < rowdata.length - 2; i++) {
+			final int currentIndex = i;
+			ICustomer customer = customerList.stream()
+					.filter(x -> x.getName().equals(model.getValueAt(currentIndex, 0))).findFirst().orElse(null);
+			
+			IAccount acc = customer.getAccountList().stream()
+					.filter(x -> x.getAccNumber().equals((String) model.getValueAt(currentIndex, 1))).findFirst()
+					.orElse(null);
+
+			model.setValueAt(String.valueOf(acc.getBalance()), i, 2);
+		}
+
 		JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts",
 				"Add interest to all accounts", JOptionPane.WARNING_MESSAGE);
 	}
