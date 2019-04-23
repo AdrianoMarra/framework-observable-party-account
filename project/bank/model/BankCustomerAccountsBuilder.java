@@ -5,10 +5,9 @@ import framework.IFactory;
 
 public class BankCustomerAccountsBuilder extends AccountBuilder {
 
-	public static IFactory getFactoryAccount(String string) 
-	{
+	public static IFactory getFactoryAccount(String string) {
 		IFactory factory = null;
-		
+
 		switch (string) {
 		case "personalCheckings":
 			factory = new PersonalCheckingsFactory();
@@ -25,8 +24,8 @@ public class BankCustomerAccountsBuilder extends AccountBuilder {
 		default:
 			break;
 		}
-		
+
 		return factory;
 	}
-	
+
 }

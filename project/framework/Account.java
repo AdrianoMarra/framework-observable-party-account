@@ -3,16 +3,18 @@ package framework;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.DoublePredicate;
 
 public class Account implements IAccount {
 	private List<ITransaction> transactions = new ArrayList<>();
 
 	private String accNumber;
 	private double balance;
-	private Integer interest = 0;
+	private double interest = 0;
 
 	public Account(HashMap<String, String> map) {
 		this.accNumber = map.get("accNumber");
+		this.interest = Double.parseDouble(map.get("interest"));
 		this.balance = 0;
 	}
 
@@ -50,7 +52,7 @@ public class Account implements IAccount {
 	}
 	
 	@Override
-	public Integer getInterest() {
+	public double getInterest() {
 		return this.interest;
 	}
 

@@ -185,12 +185,15 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
        parentframe.customData.put("city", JTextField_CT.getText());
        parentframe.customData.put("zip", JTextField_ZIP.getText());
        parentframe.customData.put("state", JTextField_ST.getText());
-
        
-       if (JRadioButton_Chk.isSelected())
+       if (JRadioButton_Chk.isSelected()) {
            parentframe.accountType="Checkings";
-           else
+       	   parentframe.customData.put("interest", "5.0");
+       } else {
            parentframe.accountType="Savings";
+       	   parentframe.customData.put("interest", "10.0");   
+       }
+
 	   parentframe.newaccount=true;
        dispose();
 	}

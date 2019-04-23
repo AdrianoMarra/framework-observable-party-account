@@ -7,7 +7,7 @@ import framework.Customer;
 import framework.IAccount;
 import framework.ICustomer;
 
-public class Person extends Customer {	
+public class Person extends Customer {
 	public Person(HashMap<String, String> customerData) {
 		super(customerData);
 	}
