@@ -1,12 +1,10 @@
 package card.Model;
 
 
-
 import framework.Customer;
-import framework.IAccount;
 
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class Person extends Customer {
     public Person(HashMap<String, String> customerData) {
@@ -14,6 +12,15 @@ public class Person extends Customer {
     }
 
 
+    public String generateBillMonthlyReport(Date date) {
+        StringBuilder st = new StringBuilder();
+        st.append(this.toString());
+        return st.toString();
+    }
 
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

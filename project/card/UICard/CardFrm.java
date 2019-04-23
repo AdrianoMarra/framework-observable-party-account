@@ -47,6 +47,7 @@ public class CardFrm extends javax.swing.JFrame {
     private JScrollPane JScrollPane1;
     private Object rowdata[];
 
+
     public CardFrm() {
         thisframe = this;
 
