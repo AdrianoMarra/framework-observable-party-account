@@ -1,21 +1,42 @@
 package framework.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import bank.bankUI.BankFrm;
 import card.CardFrm;
+import card.JDialogGenBill;
+import card.JDialog_Deposit;
+import framework.Account;
+import framework.AccountBuilder;
+import framework.Customer;
+import framework.IAccount;
+import framework.ICustomer;
+import framework.IFactory;
+import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
 
 public class FincoFrm extends javax.swing.JFrame {
 
 	boolean newaccount;
+	double amountDeposit;
+	static List<ICustomer> customerList;
+	static List<IAccount> accountList;
+	private HashMap<String, String> customerMap;
+	private HashMap<String, String> accountMap;
 	private JTable JTable1;
 	private JScrollPane JScrollPane1;
 	private DefaultTableModel model;
@@ -30,47 +51,65 @@ public class FincoFrm extends javax.swing.JFrame {
 
 	public FincoFrm() {
 		thisframe = this;
-		
-		//set configuration form financial application		
-		setTitle("Financial Application");
+
+		// set configuration form financial application
+		setTitle("Financial Applica]ion");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		setSize(575, 310);
-		setVisible(false);		
-		
+		setSize(605, 350);
+		setVisible(false);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
 		JPanel1.setLayout(null);
 		getContentPane().add(BorderLayout.CENTER, JPanel1);
 		JPanel1.setBounds(0, 0, 575, 310);
 		JScrollPane1 = new JScrollPane();
-		
-		//create table and model values
+
+		// create table and model values
 		model = new DefaultTableModel();
 		JTable1 = new JTable(model);
 		model.addColumn("Name");
-		model.addColumn("");
-		model.addColumn("");
-		model.addColumn("");
-		model.addColumn("");
+		model.addColumn("AccountNr");
+		model.addColumn("Amount");
 		JPanel1.add(JScrollPane1);
-		rowdata = new Object[7];
-		newaccount = false;		
-		
-		//configuring jpanel and scrollpanel
+
+		rowdata = new Object[3];
+		newaccount = false;
+
+		// configuring jpanel and scrollpanel
 		JPanel1.add(JScrollPane1);
-		
+
 		JScrollPane1.setBounds(12, 92, 444, 160);
-		JScrollPane1.getViewport().add(JTable1);				
+		JScrollPane1.getViewport().add(JTable1);
 		JTable1.setBounds(0, 0, 420, 0);
-		
-		
+
 		JButton_NewAccount.setText("Add Account");
 		JPanel1.add(JButton_NewAccount);
-		
-		JButton_NewAccount.setBounds(24,20,192,33);
+
+		JButton_NewAccount.setBounds(24, 20, 192, 33);
 		JButton_GenReport.setText("Generate Report");
 		JButton_GenReport.setActionCommand("jbutton");
-		
-		SymWindow aSymWindow = new SymWindow();			
+		JPanel1.add(JButton_GenReport);
+		JButton_GenReport.setBounds(240, 20, 192, 33);
+		JButton_Transaction.setText("Transaction");
+		JPanel1.add(JButton_Transaction);
+		JButton_Transaction.setBounds(468, 104, 110, 33);
+		JButton_Exit.setText("Exit");
+		JPanel1.add(JButton_Exit);
+		JButton_Exit.setBounds(468, 248, 96, 31);
+		JButton_GenReport.setActionCommand("jbutton");
+
+		SymWindow aSymWindow = new SymWindow();
+		this.addWindowListener(aSymWindow);
+		SymAction ISymAction = new SymAction();
+		JButton_Exit.addActionListener(ISymAction);
+		JButton_GenReport.addActionListener(ISymAction);
+		JButton_NewAccount.addActionListener(ISymAction);
+		JButton_Transaction.addActionListener(ISymAction);
+
+		// getting factory
+
 	}
 
 	void exitApplication() {
@@ -113,40 +152,79 @@ public class FincoFrm extends javax.swing.JFrame {
 				JButtonGenReport_actionPerformed(e);
 			else if (object == JButton_Transaction)
 				JButtonTransaction_actionPerformed(e);
-			
-		}
-
-		void JButtonTransaction_actionPerformed(ActionEvent e) 
-		{
-			
-		}
-
-		void JButtonGenReport_actionPerformed(ActionEvent e) {
-
-		}
-
-		void JButtonAcc_actionPerformed(ActionEvent e) {
-			 JDialog_AddAccount fincoAcc = new JDialog_AddAccount(thisframe);
-			 fincoAcc.setBounds(450,20,300,380);
-			 fincoAcc.show();
-			 
-			 if (newaccount) 
-			 {				 
-				 model.addRow(new Customer());
-				
-				 JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
-				 newaccount = false;
-			 }
-		
-		}
-
-		void JButtonExit_actionPerformed(ActionEvent e) {
-			System.exit(0);
 		}
 	}
 
-	public static void main(String[] args) {
+	void JButtonTransaction_actionPerformed(ActionEvent e) {
+		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 
+		if (selection >= 0) {
+			String name = (String) model.getValueAt(selection, 0);
+
+			// Show the dialog for adding deposit amount for the current mane
+			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name);
+			dep.setBounds(430, 15, 275, 140);
+			dep.show();
+
+			// compute new amount
+			double deposit = amountDeposit;
+			String samount = (String) model.getValueAt(selection, 2);
+			double currentamount = Double.parseDouble(samount);
+			double newamount = currentamount + deposit;
+
+			model.setValueAt(String.valueOf(newamount), selection, 2);
+		}
+	}
+
+	void JButtonGenReport_actionPerformed(ActionEvent e) {
+		JDialog_GenerateReport billFrm = new JDialog_GenerateReport(thisframe);
+		billFrm.setBounds(450, 20, 400, 350);
+		billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
+		billFrm.show();
+	}
+
+	void JButtonAcc_actionPerformed(ActionEvent e) {
+		JDialog_AddAccount fincoAcc = new JDialog_AddAccount(thisframe);
+		fincoAcc.setBounds(450, 20, 300, 330);
+		fincoAcc.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
+		fincoAcc.show();
+
+		if (newaccount) {
+			ICustomer customer = new Customer(customerMap);
+			IAccount account = new Account(accountMap);
+			customer.addAccount(account);
+			customerList.add(customer);
+			accountList.add(account);
+
+			model.addRow(new Object[] { customer.getName(), account.getAccNumber(), account.getBalance() });
+			JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
+			newaccount = false;
+			customerMap.clear();
+			accountMap.clear();
+		}
+	}
+
+	void JButtonExit_actionPerformed(ActionEvent e) {
+		System.exit(0);
+	}
+
+	public static void main(String[] args) {
+		try {
+			// Add the following code if you want the Look and Feel
+			// to be set to the Look and Feel of the native system.
+
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception e) {
+			}
+
+			// Create a new instance of our application's frame, and make it visible.
+			(new FincoFrm()).setVisible(true);
+		} catch (Throwable t) {
+			t.printStackTrace();
+			// Ensure the application exits with an error condition.
+			System.exit(1);
+		}
 	}
 
 }
