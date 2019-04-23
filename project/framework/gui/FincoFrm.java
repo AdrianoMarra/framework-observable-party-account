@@ -19,9 +19,6 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import bank.bankUI.BankFrm;
-import card.CardFrm;
-import card.JDialogGenBill;
-import card.JDialog_Deposit;
 import framework.Account;
 import framework.AccountBuilder;
 import framework.Customer;
@@ -166,7 +163,8 @@ public class FincoFrm extends javax.swing.JFrame {
 			String name = (String) model.getValueAt(selection, 0);
 			String accNumber = (String)model.getValueAt(selection, 1);
 			IAccount found = accountList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst().orElse(null);
-				
+			
+			
 			// Show the dialog for adding deposit amount for the current mane
 			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name, found);
 			dep.setBounds(430, 15, 275, 160);

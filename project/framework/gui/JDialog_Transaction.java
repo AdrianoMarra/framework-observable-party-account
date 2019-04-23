@@ -4,7 +4,9 @@ import javax.swing.JDialog;
 
 import framework.IAccount;
 import framework.ITransaction;
+import framework.ITransactionManager;
 import framework.Transaction;
+import framework.TransactionManager;
 
  
 public class JDialog_Transaction extends JDialog {
@@ -19,6 +21,7 @@ public class JDialog_Transaction extends JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
+	ITransactionManager transactionManager = new TransactionManager();
 
 	public JDialog_Transaction(FincoFrm parent, String name, IAccount acc) 
 	{
@@ -73,8 +76,10 @@ public class JDialog_Transaction extends JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
- 		ITransaction transaction = new Transaction(acc, parentFrame.amountDeposit);
-		transaction.executeTransaction();
+ 		ITransaction transaction = new Transaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 		
+ 		transactionManager.setTransaction(transaction);
+ 		transactionManager.execute();
+ 		
 		dispose();
 	}
 
