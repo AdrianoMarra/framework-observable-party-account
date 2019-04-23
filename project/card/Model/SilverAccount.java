@@ -13,7 +13,7 @@ public class SilverAccount extends CreditCardAccount {
 
     public SilverAccount(HashMap<String, String> accountData) {
         super(accountData);
-        setInterest(Double.valueOf(0.8));
+        setInterest(Double.valueOf(0.08));
     }
 
 

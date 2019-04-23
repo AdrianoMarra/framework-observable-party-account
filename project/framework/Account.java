@@ -80,4 +80,9 @@ public class Account implements IAccount {
 	public void addTransaction(ITransaction transaction) {
 		transactions.add(transaction);
 	}
+  
+  @Override
+	public String report(Date date) {
+		return "";
+	}
 }
