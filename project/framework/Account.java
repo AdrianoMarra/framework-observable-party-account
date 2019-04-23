@@ -1,6 +1,7 @@
 package framework;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.DoublePredicate;
@@ -77,5 +78,10 @@ public class Account implements IAccount {
 	@Override
 	public void addTransaction(ITransaction transaction) {
 		transactions.add(transaction);
+	}
+
+	@Override
+	public String report(Date date) {
+		return "";
 	}
 }

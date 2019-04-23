@@ -86,4 +86,16 @@ public class Customer implements ICustomer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				", name='" + name + '\'' + '\n'+
+				", street='" + street + '\'' +
+				", city='" + city + '\'' +
+				", state='" + state + '\'' +
+				", zip='" + zip + '\'' +
+				", email='" + email + '\'' +
+				'}';
+	}
 }

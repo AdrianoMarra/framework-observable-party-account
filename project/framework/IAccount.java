@@ -1,5 +1,6 @@
 package framework;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IAccount 
@@ -27,5 +28,7 @@ public interface IAccount
 	ICustomer getCustomer();
 
 	void setCustomer(ICustomer customer);
+
+	public String report(Date date);
 
 }
