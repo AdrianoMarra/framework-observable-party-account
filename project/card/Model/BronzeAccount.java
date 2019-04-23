@@ -7,5 +7,6 @@ import java.util.HashMap;
 public class BronzeAccount extends Account {
     public BronzeAccount(HashMap<String, String> map) {
         super(map);
+        setInterest(0.10);
     }
 }

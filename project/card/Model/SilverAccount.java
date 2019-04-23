@@ -8,12 +8,16 @@ import framework.ITransaction;
 
 import java.util.HashMap;
 
-public class SilverAccount extends Account {
+public class SilverAccount extends CreditCardAccount {
 
 
     public SilverAccount(HashMap<String, String> accountData) {
         super(accountData);
+        setInterest(Double.valueOf(0.8));
     }
+
+
+
 
     @Override
     public void addTransaction(ITransaction transaction) {

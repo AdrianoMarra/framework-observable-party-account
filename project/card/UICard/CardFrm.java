@@ -27,6 +27,7 @@ public class CardFrm extends javax.swing.JFrame {
     String expdate;
     String ccnumber;
     String email;
+    String interest = "0.0";
     boolean newaccount;
     static boolean debug = true;
 
@@ -176,6 +177,7 @@ public class CardFrm extends javax.swing.JFrame {
 
         if (newaccount) {
             // add row to table
+            customData.put("interest", interest);
             currentFactory = CardCustomerAccountBuilder.getFactoryAccount(accountType);
             IAccount account = currentFactory.createAccount(customData);
             ICustomer customer = currentFactory.createCustomer(customData);

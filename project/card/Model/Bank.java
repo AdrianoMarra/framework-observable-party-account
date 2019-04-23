@@ -1,10 +1,7 @@
 package card.Model;
 
 import bank.model.BankCustomerAccountsBuilder;
-import framework.Default;
-import framework.IAccount;
-import framework.ICustomer;
-import framework.IFactory;
+import framework.*;
 
 import java.util.HashMap;
 
@@ -19,6 +16,13 @@ public class Bank extends Default {
 
     }
 
+    private static void clickAddInterested(){
+
+
+    }
+
+
+
     private static void clickPersonalCreditCard() {
         HashMap<String, String> customData = new HashMap<>();
 
@@ -30,6 +34,7 @@ public class Bank extends Default {
         customData.put("zip", "31312");
         customData.put("birthdate", "11/18/1990");
         customData.put("email", "adriano@test");
+        customData.put("interest", "8");
 
         currentFactory = CardCustomerAccountBuilder.getFactoryAccount("creditCardSilver");
         IAccount silverAccount = currentFactory.createAccount(customData);
@@ -37,9 +42,11 @@ public class Bank extends Default {
 
         customer1.addAccount(silverAccount);
 
+//        ITransaction[] transactions =
+
+//        silverAccount.addTransaction();
+
+
         int debug = 1;
-
-
-
     }
 }
