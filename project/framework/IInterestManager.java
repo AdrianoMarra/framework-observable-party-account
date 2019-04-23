@@ -5,6 +5,6 @@ import java.util.List;
 public interface  IInterestManager 
 {
 	void addAccount(IAccount account);
-	void notifyAccounts();
+	void updateAccountsInterest();
 	List<IAccount> getAccounts();
 }

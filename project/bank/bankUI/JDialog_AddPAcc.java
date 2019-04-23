@@ -188,10 +188,8 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
        
        if (JRadioButton_Chk.isSelected()) {
            parentframe.accountType="Checkings";
-       	   parentframe.customData.put("interest", "5.0");
        } else {
            parentframe.accountType="Savings";
-       	   parentframe.customData.put("interest", "10.0");   
        }
 
 	   parentframe.newaccount=true;
