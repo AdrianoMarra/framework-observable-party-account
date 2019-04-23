@@ -4,8 +4,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.swing.table.DefaultTableModel;
+
+import bank.model.BankCustomerAccountsBuilder;
+import framework.IAccount;
+import framework.ICustomer;
+import framework.IFactory;
+
 import javax.swing.*;
 
 /**
@@ -18,12 +25,12 @@ public class BankFrm extends javax.swing.JFrame
     /****
      * init variables in the object
      ****/
-     String accountnr;
-	public String clientName;
-	public String street;
-	public String city;
-	public String zip;
-	public String state;
+//    String accountnr;
+//	public String clientName;
+//	public String street;
+//	public String city;
+//	public String zip;
+//	public String state;
 	public String accountType;
 	public String clientType;
 	public String amountDeposit;
@@ -34,8 +41,11 @@ public class BankFrm extends javax.swing.JFrame
     BankFrm myframe;
     private Object rowdata[];
     
+	private static IFactory currentFactory;
+	protected static HashMap<String, String> customData = new HashMap<>();
+
 	public BankFrm()
-	{
+	{	
 		myframe = this;
 
 		setTitle("Bank Application.");
@@ -92,7 +102,7 @@ public class BankFrm extends javax.swing.JFrame
 		// lineBorder1.setRoundedCorners(true);
 		// lineBorder1.setLineColor(java.awt.Color.green);
 		//$$ lineBorder1.move(24,312);
-
+		
 		JButton_PerAC.setActionCommand("jbutton");
 
 		SymWindow aSymWindow = new SymWindow();
@@ -105,6 +115,8 @@ public class BankFrm extends javax.swing.JFrame
 		JButton_Withdraw.addActionListener(lSymAction);
 		JButton_Addinterest.addActionListener(lSymAction);
 		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 	}
 
 	
@@ -219,20 +231,25 @@ public class BankFrm extends javax.swing.JFrame
 		pac.show();
 
 		if (newaccount){
+				
+			//create new account
+			String factoryType = "personal" + accountType;
+			currentFactory = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
+			IAccount acc = currentFactory.createAccount(customData);
+			ICustomer customer = currentFactory.createCustomer(customData);
+			customer.addAccount(acc);
+			
             // add row to table
-            rowdata[0] = accountnr;
-            rowdata[1] = clientName;
-            rowdata[2] = city;
+            rowdata[0] = acc.getAccNumber();
+            rowdata[1] = customer.getName();
+            rowdata[2] = customer.getCity();
             rowdata[3] = "P";
             rowdata[4] = accountType;
-            rowdata[5] = "0";
+            rowdata[5] = acc.getBalance();
             model.addRow(rowdata);
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount=false;
-        }
-
-       
-        
+        } 
     }
 
 	void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event)
@@ -248,20 +265,28 @@ public class BankFrm extends javax.swing.JFrame
 		pac.show();
 		
 		if (newaccount){
+			
+			//create new account
+			String factoryType = "company" + accountType;
+			currentFactory = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
+			IAccount acc = currentFactory.createAccount(customData);
+			ICustomer customer = currentFactory.createCustomer(customData);
+			customer.addAccount(acc);
+			
             // add row to table
-            rowdata[0] = accountnr;
-            rowdata[1] = clientName;
-            rowdata[2] = city;
+            rowdata[0] = acc.getAccNumber();
+            rowdata[1] = customer.getName();
+            rowdata[2] = customer.getCity();
             rowdata[3] = "C";
             rowdata[4] = accountType;
-            rowdata[5] = "0";
+            rowdata[5] = acc.getBalance();
             model.addRow(rowdata);
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount=false;
         }
 
 	}
-
+	
 	void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event)
 	{
 	    // get selected name
@@ -281,8 +306,6 @@ public class BankFrm extends javax.swing.JFrame
 		    long newamount=currentamount+deposit;
 		    model.setValueAt(String.valueOf(newamount),selection, 5);
 		}
-		
-		
 	}
 
 	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)

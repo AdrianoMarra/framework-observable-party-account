@@ -19,4 +19,9 @@ public interface IAccount
 	double getBalance();
 
 	void setBalance(double balance);
+	
+	public void setInterest(Integer interest);
+
+	public Integer getInterest();
+
 }

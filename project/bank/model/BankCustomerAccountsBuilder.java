@@ -12,12 +12,16 @@ public class BankCustomerAccountsBuilder extends AccountBuilder {
 		switch (string) {
 		case "personalCheckings":
 			factory = new PersonalCheckingsFactory();
+			break;
 		case "personalSavings":
 			factory = new PersonalSavingsFactory();
+			break;
 		case "companyCheckings":
 			factory = new CompanyCheckingsFactory();
+			break;
 		case "companySavings":
 			factory = new CompanySavingsFactory();
+			break;
 		default:
 			break;
 		}

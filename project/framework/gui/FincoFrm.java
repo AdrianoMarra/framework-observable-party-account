@@ -56,7 +56,7 @@ public class FincoFrm extends javax.swing.JFrame {
 		newaccount = false;		
 		
 		//configuring jpanel and scrollpanel
-		JPanel1.add(JScrollPane1)
+		JPanel1.add(JScrollPane1);
 		
 		JScrollPane1.setBounds(12, 92, 444, 160);
 		JScrollPane1.getViewport().add(JTable1);				
