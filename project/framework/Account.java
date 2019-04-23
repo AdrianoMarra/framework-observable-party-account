@@ -9,6 +9,7 @@ public class Account implements IAccount {
 
 	private String accNumber;
 	private double balance;
+	private Integer interest = 0;
 
 	public Account(HashMap<String, String> map) {
 		this.accNumber = map.get("accNumber");
@@ -41,7 +42,16 @@ public class Account implements IAccount {
 
 	@Override
 	public void addInterest() {
-
+	}
+	
+	@Override
+	public void setInterest(Integer interest) {
+		this.interest = interest;
+	}
+	
+	@Override
+	public Integer getInterest() {
+		return this.interest;
 	}
 
 	@Override

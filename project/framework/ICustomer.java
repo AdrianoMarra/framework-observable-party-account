@@ -3,11 +3,10 @@ package framework;
 import java.util.List;
 
 public interface ICustomer {
-	List<IAccount> getListAccount();
-
-	void addAccount(IAccount acc);
-
+	
 	List<IAccount> getAccountList();
+	
+	void addAccount(IAccount acc);
 
 	void setAccountList(List<IAccount> accountList);
 

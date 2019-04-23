@@ -26,19 +26,17 @@ public class Customer implements ICustomer {
 		email = customerData.get("email");
 	}
 
-	public void addAccount(Account acc) {
+	public void addAccount(IAccount acc) {
 		accountList.add(acc);
 	}
 
+	
 	@Override
-	public List<IAccount> getListAccount() {
-		return accountList;
-	}
-
 	public List<IAccount> getAccountList() {
 		return accountList;
 	}
 
+	@Override
 	public void setAccountList(List<IAccount> accountList) {
 		this.accountList = accountList;
 	}
@@ -98,5 +96,4 @@ public class Customer implements ICustomer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 }
