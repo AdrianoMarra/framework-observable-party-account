@@ -8,13 +8,17 @@ import framework.IAccount;
 import framework.ITransaction;
 
 public class SavingsAccount extends Account {
-
+	
 	public SavingsAccount(HashMap<String, String> accountData) {
 		super(accountData);
 	}
 
 	@Override
-	public void addInterest() {
-		super.setInterest(5);
+	public void addInterest() {		
+		double interest = super.getInterest();
+		double balance = super.getBalance();
+		double newBalance = ((interest/100) * balance) + balance;
+
+		super.setBalance(newBalance);
 	}
 }

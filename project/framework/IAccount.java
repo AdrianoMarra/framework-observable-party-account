@@ -22,6 +22,6 @@ public interface IAccount
 	
 	public void setInterest(Integer interest);
 
-	public Integer getInterest();
+	public double getInterest();
 
 }

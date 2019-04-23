@@ -28,12 +28,6 @@ public class BankFrm extends javax.swing.JFrame
     /****
      * init variables in the object
      ****/
-//    String accountnr;
-//	public String clientName;
-//	public String street;
-//	public String city;
-//	public String zip;
-//	public String state;
 	public String accountType;
 	public String clientType;
 	public String amountDeposit;
@@ -45,7 +39,7 @@ public class BankFrm extends javax.swing.JFrame
     private Object rowdata[];
     
 	private static IFactory currentFactory;
-	protected static HashMap<String, String> customData = new HashMap<>();
+	protected HashMap<String, String> customData = new HashMap<>();
 	List<ICustomer> customers = new ArrayList<>();
 	AccountsInterestManager accountsManager = new AccountsInterestManager();
 	

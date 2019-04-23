@@ -7,7 +7,7 @@ import framework.IAccount;
 import framework.ICustomer;
 
 public class PersonalCheckingsFactory extends CustomerAccountFactory {
-	
+
 	@Override
 	public ICustomer createCustomer(HashMap<String, String> customerData) {
 		return new Person(customerData);
@@ -17,5 +17,5 @@ public class PersonalCheckingsFactory extends CustomerAccountFactory {
 	public IAccount createAccount(HashMap<String, String> accountData) {
 		return new CheckingsAccount(accountData);
 	}
-	
+
 }
