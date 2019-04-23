@@ -1,9 +1,9 @@
 package framework;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.DoublePredicate;
 
 public class Account implements IAccount {
 	private List<ITransaction> transactions = new ArrayList<>();
