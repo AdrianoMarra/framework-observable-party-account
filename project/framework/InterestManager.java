@@ -1,25 +1,24 @@
 package framework;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InterestManager implements IInterestManager {
-	private List<IAccount> accounts;
-
-	public InterestManager(List<IAccount> accounts) {
-		this.accounts = accounts;
-	}
+	private List<IAccount> accounts = new ArrayList<>();
 
 	@Override
-	public void setAccounts(List<IAccount> accounts) {
-		this.accounts = accounts;
+	public void addAccount(IAccount account) {
+		this.accounts.add(account);
 	}
 
 	@Override
 	public void notifyAccounts() {
 		for (IAccount iAccount : accounts)
-			iAccount.addInterest();
-		
-		System.out.println("Add interest to all the accounts");
+			iAccount.addInterest();		
 	}
 
+	@Override
+	public List<IAccount> getAccounts() {
+		return accounts;
+	}
 }

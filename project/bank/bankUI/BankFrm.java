@@ -3,11 +3,14 @@ package bank.bankUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.table.DefaultTableModel;
 
+import bank.model.AccountsInterestManager;
 import bank.model.BankCustomerAccountsBuilder;
 import framework.IAccount;
 import framework.ICustomer;
@@ -43,7 +46,9 @@ public class BankFrm extends javax.swing.JFrame
     
 	private static IFactory currentFactory;
 	protected static HashMap<String, String> customData = new HashMap<>();
-
+	List<ICustomer> customers = new ArrayList<>();
+	AccountsInterestManager accountsManager = new AccountsInterestManager();
+	
 	public BankFrm()
 	{	
 		myframe = this;
@@ -231,13 +236,15 @@ public class BankFrm extends javax.swing.JFrame
 		pac.show();
 
 		if (newaccount){
-				
+			
 			//create new account
 			String factoryType = "personal" + accountType;
 			currentFactory = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			IAccount acc = currentFactory.createAccount(customData);
 			ICustomer customer = currentFactory.createCustomer(customData);
 			customer.addAccount(acc);
+			customers.add(customer);
+			accountsManager.addAccount(acc);
 			
             // add row to table
             rowdata[0] = acc.getAccNumber();
@@ -272,6 +279,8 @@ public class BankFrm extends javax.swing.JFrame
 			IAccount acc = currentFactory.createAccount(customData);
 			ICustomer customer = currentFactory.createCustomer(customData);
 			customer.addAccount(acc);
+			customers.add(customer);
+			accountsManager.addAccount(acc);
 			
             // add row to table
             rowdata[0] = acc.getAccNumber();
@@ -336,7 +345,7 @@ public class BankFrm extends javax.swing.JFrame
 	
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
+		  accountsManager.notifyAccounts();
 		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
-	    
 	}
 }
