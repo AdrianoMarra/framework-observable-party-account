@@ -20,8 +20,12 @@ public interface IAccount
 
 	void setBalance(double balance);
 	
-	public void setInterest(double interest);
+	void setInterest(double interest);
 
-	public double getInterest();
+	double getInterest();
+
+	ICustomer getCustomer();
+
+	void setCustomer(ICustomer customer);
 
 }

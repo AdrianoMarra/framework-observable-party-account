@@ -232,8 +232,18 @@ public class BankFrm extends javax.swing.JFrame
 			String factoryType = "personal" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			IAccount acc = currentFactoryAccount.createAccount(customData);
-			ICustomer customer = currentFactoryAccount.createCustomer(customData);
-			customer.addAccount(acc);
+			
+			ICustomer customer = customers.stream()
+					.filter(cust -> cust.getName().equals(customData.get("name")))
+					.findFirst()
+					.orElse(null);
+			
+			if (customer == null) {
+				customer = currentFactoryAccount.createCustomer(customData);
+			}
+			
+			acc.setCustomer(customer);
+			customer.addAccount(acc);	
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
@@ -268,7 +278,16 @@ public class BankFrm extends javax.swing.JFrame
 			String factoryType = "company" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			IAccount acc = currentFactoryAccount.createAccount(customData);
-			ICustomer customer = currentFactoryAccount.createCustomer(customData);
+			ICustomer customer = customers.stream()
+					.filter(cust -> cust.getName().equals(customData.get("name")))
+					.findFirst()
+					.orElse(null);
+			
+			if (customer == null) {
+				customer = currentFactoryAccount.createCustomer(customData);
+			}
+			
+			acc.setCustomer(customer);
 			customer.addAccount(acc);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
@@ -295,7 +314,9 @@ public class BankFrm extends javax.swing.JFrame
 		if (selection >= 0) {
 			String accNumber = (String) model.getValueAt(selection, 0);
 			
-			IAccount found = accountsManager.getAccounts().stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+			IAccount found = accountsManager.getAccounts()
+					.stream().filter(x -> x.getAccNumber().equals(accNumber))
+					.findFirst()
 					.orElse(null);
 		
 			// Show the dialog for adding deposit amount for the current mane
@@ -311,26 +332,27 @@ public class BankFrm extends javax.swing.JFrame
 	}
 
 	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
-	{
+	{		
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-        if (selection >= 0){
-            String accnr = (String)model.getValueAt(selection, 0);
+       
+		if (selection >= 0) {
+			String accNumber = (String) model.getValueAt(selection, 0);
+			
+			IAccount found = accountsManager.getAccounts()
+					.stream().filter(x -> x.getAccNumber().equals(accNumber))
+					.findFirst()
+					.orElse(null);
+		
+			// Show the dialog for adding deposit amount for the current mane
+			JDialog_Withdraw dep = new JDialog_Withdraw(myframe, accNumber, found);
+			dep.setBounds(430, 15, 275, 160);
+			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
+			dep.show();
 
-		    //Show the dialog for adding withdraw amount for the current mane
-		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accnr);
-		    wd.setBounds(430, 15, 275, 140);
-		    wd.show();
-    		
-		    // compute new amount
-            long deposit = Long.parseLong(amountDeposit);
-            String samount = (String)model.getValueAt(selection, 5);
-            long currentamount = Long.parseLong(samount);
-		    long newamount=currentamount-deposit;
-		    model.setValueAt(String.valueOf(newamount),selection, 5);
-		    if (newamount <0){
-		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
-		    }
+			// get new balance
+			double newBalance = found.getBalance();
+			model.setValueAt(newBalance, selection, 5);
 		}
 	}
 	
