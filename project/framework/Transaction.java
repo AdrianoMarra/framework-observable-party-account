@@ -33,5 +33,9 @@ public class Transaction implements ITransaction {
 	public void setAccount(IAccount account) {
 		currentAccount = account;
 	}
-
+	
+	@Override
+	public double getAmount() {
+		return amount;
+	}
 }

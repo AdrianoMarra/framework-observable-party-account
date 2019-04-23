@@ -6,7 +6,6 @@ public class TransactionProxy implements ITransaction {
 
 	public TransactionProxy(ITransaction transaction) {
 		this.transaction = transaction;
-		
 	}
 	
 	@Override
@@ -34,4 +33,8 @@ public class TransactionProxy implements ITransaction {
 		
 	}
 
+	@Override
+	public double getAmount() {
+		return transaction.getAmount();
+	}
 }

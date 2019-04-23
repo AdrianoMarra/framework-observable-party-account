@@ -20,19 +20,20 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import bank.bankUI.BankFrm;
-import bank.model.AccountsInterestManager;
+//import bank.model.AccountsInterestManager;
 import framework.Account;
 import framework.AccountBuilder;
 import framework.Customer;
 import framework.IAccount;
 import framework.ICustomer;
 import framework.IFactory;
+import framework.InterestManager;
 
 public class FincoFrm extends javax.swing.JFrame {
 
 	boolean newaccount;
 	double amountDeposit;
-	AccountsInterestManager accountsManager = new AccountsInterestManager();
+	InterestManager accountsManager = new InterestManager();
 	static List<ICustomer> customerList = new ArrayList<>();
 	static List<IAccount> accountList = new ArrayList<>();
 	HashMap<String, String> customerMap;
@@ -225,7 +226,7 @@ public class FincoFrm extends javax.swing.JFrame {
 	}
 
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
-		accountsManager.notifyAccounts();
+		accountsManager.updateAccountsInterest();
 
 		for (int i = 0; i < rowdata.length - 2; i++) {
 			final int currentIndex = i;

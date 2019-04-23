@@ -12,7 +12,7 @@ public class InterestManager implements IInterestManager {
 	}
 
 	@Override
-	public void notifyAccounts() {
+	public void updateAccountsInterest() {
 		for (IAccount iAccount : accounts)
 			iAccount.addInterest();		
 	}

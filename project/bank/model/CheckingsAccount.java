@@ -11,6 +11,7 @@ public class CheckingsAccount extends Account {
 
 	public CheckingsAccount(HashMap<String, String> accountData) {
 		super(accountData);
+		super.setInterest(5);
 	}
 
 	@Override

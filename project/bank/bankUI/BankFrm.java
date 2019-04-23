@@ -1,20 +1,17 @@
 package bank.bankUI;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.table.DefaultTableModel;
 
-import bank.model.AccountsInterestManager;
 import bank.model.BankCustomerAccountsBuilder;
 import framework.IAccount;
 import framework.ICustomer;
 import framework.IFactory;
+import framework.InterestManager;
 
 import javax.swing.*;
 
@@ -38,10 +35,10 @@ public class BankFrm extends javax.swing.JFrame
     BankFrm myframe;
     private Object rowdata[];
     
-	private static IFactory currentFactory;
+	private static IFactory currentFactoryAccount;
 	protected HashMap<String, String> customData = new HashMap<>();
 	List<ICustomer> customers = new ArrayList<>();
-	AccountsInterestManager accountsManager = new AccountsInterestManager();
+	InterestManager accountsManager = new InterestManager();
 	
 	public BankFrm()
 	{	
@@ -233,9 +230,9 @@ public class BankFrm extends javax.swing.JFrame
 			
 			//create new account
 			String factoryType = "personal" + accountType;
-			currentFactory = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
-			IAccount acc = currentFactory.createAccount(customData);
-			ICustomer customer = currentFactory.createCustomer(customData);
+			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
+			IAccount acc = currentFactoryAccount.createAccount(customData);
+			ICustomer customer = currentFactoryAccount.createCustomer(customData);
 			customer.addAccount(acc);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
@@ -269,9 +266,9 @@ public class BankFrm extends javax.swing.JFrame
 			
 			//create new account
 			String factoryType = "company" + accountType;
-			currentFactory = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
-			IAccount acc = currentFactory.createAccount(customData);
-			ICustomer customer = currentFactory.createCustomer(customData);
+			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
+			IAccount acc = currentFactoryAccount.createAccount(customData);
+			ICustomer customer = currentFactoryAccount.createCustomer(customData);
 			customer.addAccount(acc);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
@@ -294,20 +291,22 @@ public class BankFrm extends javax.swing.JFrame
 	{
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-        if (selection >=0){
-            String accnr = (String)model.getValueAt(selection, 0);
-    	    
-		    //Show the dialog for adding deposit amount for the current mane
-		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accnr);
-		    dep.setBounds(430, 15, 275, 140);
-		    dep.show();
-    		
-		    // compute new amount
-            long deposit = Long.parseLong(amountDeposit);
-            String samount = (String)model.getValueAt(selection, 5);
-            long currentamount = Long.parseLong(samount);
-		    long newamount=currentamount+deposit;
-		    model.setValueAt(String.valueOf(newamount),selection, 5);
+       
+		if (selection >= 0) {
+			String accNumber = (String) model.getValueAt(selection, 0);
+			
+			IAccount found = accountsManager.getAccounts().stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+					.orElse(null);
+		
+			// Show the dialog for adding deposit amount for the current mane
+			JDialog_Deposit dep = new JDialog_Deposit(myframe, accNumber, found);
+			dep.setBounds(430, 15, 275, 160);
+			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
+			dep.show();
+
+			// get new balance
+			double newBalance = found.getBalance();
+			model.setValueAt(newBalance, selection, 5);
 		}
 	}
 
@@ -315,7 +314,7 @@ public class BankFrm extends javax.swing.JFrame
 	{
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-        if (selection >=0){
+        if (selection >= 0){
             String accnr = (String)model.getValueAt(selection, 0);
 
 		    //Show the dialog for adding withdraw amount for the current mane
@@ -333,13 +332,21 @@ public class BankFrm extends javax.swing.JFrame
 		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
 		    }
 		}
-		
-		
 	}
 	
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
-		  accountsManager.notifyAccounts();
-		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
+		  accountsManager.updateAccountsInterest();
+		  int count = 0;
+		  for (int i = 0; i < customers.size(); i++) {
+			  List<IAccount> customerAccounts = customers.get(i).getAccountList();
+			  for (int j = 0; j < customerAccounts.size(); j++) {
+				  	Double newBalance = customerAccounts.get(j).getBalance();
+					model.setValueAt(newBalance, count, 5);
+					count++;
+			  }
+		  }
+	
+		  JOptionPane.showMessageDialog(JButton_Addinterest, "Added interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
 	}
 }
