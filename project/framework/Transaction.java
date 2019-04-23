@@ -33,15 +33,19 @@ public class Transaction implements ITransaction {
 	public void setAccount(IAccount account) {
 		currentAccount = account;
 	}
-
-	@Override
-	public Date getDate() {
-		return date;
-	}
-
+	
 	@Override
 	public double getAmount() {
 		return amount;
 	}
 
+	@Override
+	public Date getDate() {
+		return date;
+	}
+	
+	@Override
+	public ITransaction getTransaction() {
+		return this;
+	}
 }

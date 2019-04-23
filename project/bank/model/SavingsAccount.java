@@ -13,13 +13,4 @@ public class SavingsAccount extends Account {
 		super(accountData);
 		super.setInterest(10);
 	}
-
-	@Override
-	public void addInterest() {		
-		double interest = super.getInterest();
-		double balance = super.getBalance();
-		double newBalance = ((interest/100) * balance) + balance;
-
-		super.setBalance(newBalance);
-	}
 }
