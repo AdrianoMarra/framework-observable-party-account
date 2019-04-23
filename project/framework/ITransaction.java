@@ -1,9 +1,13 @@
 package framework;
+
+import java.util.Date;
+
 public interface ITransaction {
 
 	public boolean executeTransaction();
 	public IAccount getAccount();
 	public void setAccount(IAccount account);
-	double getAmount();
+	public Date getDate();
+	public double getAmount();
 
 }

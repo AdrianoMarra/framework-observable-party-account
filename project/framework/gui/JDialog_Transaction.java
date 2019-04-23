@@ -78,7 +78,7 @@ public class JDialog_Transaction extends JDialog {
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
  		ITransaction transaction = new Transaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
- 		transaction = new TransactionProxy(transaction);  		
+ 		transaction = new TransactionProxy(transaction);
  		transactionManager.setTransaction(transaction);
  		transactionManager.execute();
  		

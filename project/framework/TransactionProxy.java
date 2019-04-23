@@ -1,5 +1,7 @@
 package framework;
 
+import java.util.Date;
+
 public class TransactionProxy implements ITransaction {
 
 	public ITransaction transaction;
@@ -7,7 +9,7 @@ public class TransactionProxy implements ITransaction {
 	public TransactionProxy(ITransaction transaction) {
 		this.transaction = transaction;
 	}
-	
+
 	@Override
 	public boolean executeTransaction() 
 	{		
@@ -34,7 +36,14 @@ public class TransactionProxy implements ITransaction {
 	}
 
 	@Override
+	public Date getDate() {
+		return transaction.getDate();
+	}
+
+	@Override
 	public double getAmount() {
 		return transaction.getAmount();
 	}
+
+
 }
