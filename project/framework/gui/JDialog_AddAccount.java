@@ -26,7 +26,6 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 
-
 	public JDialog_AddAccount(FincoFrm thisframe) {
 		super(thisframe);
 		parentFrame = thisframe;
@@ -119,6 +118,7 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
 		parentFrame.customerMap.put("state", JTextField_ST.getText());
 		parentFrame.customerMap.put("email", JTextField_Email.getText());
 		parentFrame.accountMap.put("accNumber", JTextField_ACCNR.getText());
+		parentFrame.accountMap.put("interest", "5.0");
 
 		parentFrame.newaccount = true;
 		dispose();
