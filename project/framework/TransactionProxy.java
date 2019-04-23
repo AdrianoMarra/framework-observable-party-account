@@ -1,5 +1,7 @@
 package framework;
 
+import java.util.Date;
+
 public class TransactionProxy implements ITransaction {
 
 	public ITransaction transaction;
@@ -9,15 +11,17 @@ public class TransactionProxy implements ITransaction {
 	}
 
 	@Override
-	public boolean executeTransaction() {
+	public boolean executeTransaction() 
+	{		
 		transaction.executeTransaction();
-		Post();
-		System.out.println("Transaction Proxy Executed");
+		Post();		
+		System.out.println("Transaction Proxy Executed");		
 		return true;
 	}
-
-	public void Post() {
-		IEmailManager.sendEmail("");
+	
+	public void Post() 
+	{
+		IEmailManager.sendEmail("");		
 	}
 
 	@Override
@@ -28,11 +32,18 @@ public class TransactionProxy implements ITransaction {
 	@Override
 	public void setAccount(IAccount account) {
 		transaction.setAccount(account);
+		
+	}
 
+	@Override
+	public Date getDate() {
+		return transaction.getDate();
 	}
 
 	@Override
 	public double getAmount() {
 		return transaction.getAmount();
 	}
+
+
 }
