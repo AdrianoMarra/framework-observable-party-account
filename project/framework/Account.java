@@ -17,7 +17,7 @@ public class Account implements IAccount {
 		this.accNumber = map.get("accNumber");
 		this.customer = customer;
  		this.balance = 0;
- 		customer.addAccount(this);
+ 		this.customer.addAccount(this);
 	}
 
 	@Override
