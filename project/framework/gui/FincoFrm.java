@@ -164,15 +164,17 @@ public class FincoFrm extends javax.swing.JFrame {
 
 		if (selection >= 0) {
 			String name = (String) model.getValueAt(selection, 0);
-
+			String accNumber = (String)model.getValueAt(selection, 1);
+			IAccount found = accountList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst().orElse(null);
+				
 			// Show the dialog for adding deposit amount for the current mane
-			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name);
+			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name, found);
 			dep.setBounds(430, 15, 275, 160);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 			dep.show();
 
 			// compute new amount
-			double deposit = amountDeposit;
+			double deposit = found.getBalance();
 			double samount = Double.parseDouble((String)model.getValueAt(selection, 2));
 			double currentamount = samount;
 			double newamount = currentamount + deposit;

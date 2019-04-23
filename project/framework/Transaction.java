@@ -9,14 +9,16 @@ public class Transaction implements ITransaction {
 	private IAccount currentAccount;
 	
 	
-	public Transaction(IAccount account) {
-		currentAccount = account;
+	public Transaction(IAccount account, double amount) {
+		this.currentAccount = account;
+		this.amount = amount;
 	}
 	
 	@Override
 	public boolean executeTransaction()
 	{		
 		System.out.println("Transaction Command Executed");
+		currentAccount.setBalance(currentAccount.getBalance() * amount);		
 		currentAccount.addTransaction(this);
 		return true;
 	}

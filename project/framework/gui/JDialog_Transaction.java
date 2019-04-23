@@ -2,11 +2,16 @@ package framework.gui;
 
 import javax.swing.JDialog;
 
+import framework.IAccount;
+import framework.ITransaction;
+import framework.Transaction;
+
  
 public class JDialog_Transaction extends JDialog {
 
 	private FincoFrm parentFrame;
 	private String name;
+	private IAccount acc;
 
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
@@ -15,11 +20,12 @@ public class JDialog_Transaction extends JDialog {
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
 
-	public JDialog_Transaction(FincoFrm parent, String name) 
+	public JDialog_Transaction(FincoFrm parent, String name, IAccount acc) 
 	{
 		super(parent);
 		this.parentFrame = parent;
 		this.name = name;
+		this.acc = acc;
 		setTitle("Transaction");
 		setModal(true);
 		getContentPane().setLayout(null);
@@ -67,7 +73,8 @@ public class JDialog_Transaction extends JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		parentFrame.amountDeposit = Double.parseDouble(JTextField_Deposit.getText());
+ 		ITransaction transaction = new Transaction(acc, parentFrame.amountDeposit);
+		transaction.executeTransaction();
 		dispose();
 	}
 
