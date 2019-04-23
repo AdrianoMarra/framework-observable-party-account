@@ -13,9 +13,11 @@ public class Account implements IAccount {
 	private double balance;
 	private double interest = 2;
 
-	public Account(HashMap<String, String> map) {
+	public Account(HashMap<String, String> map, ICustomer customer) {
 		this.accNumber = map.get("accNumber");
+		this.customer = customer;
  		this.balance = 0;
+ 		customer.addAccount(this);
 	}
 
 	@Override

@@ -10,8 +10,8 @@ public class CustomerAccountFactory implements IFactory {
 	}
 
 	@Override
-	public IAccount createAccount(HashMap<String, String> accountData) {
-		return new Account(accountData);
+	public IAccount createAccount(HashMap<String, String> accountData, ICustomer customer) {
+		return new Account(accountData, customer);
 	}
 
 }

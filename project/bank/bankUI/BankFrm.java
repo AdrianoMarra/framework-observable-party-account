@@ -231,7 +231,6 @@ public class BankFrm extends javax.swing.JFrame
 			//create new account
 			String factoryType = "personal" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
-			IAccount acc = currentFactoryAccount.createAccount(customData);
 			
 			ICustomer customer = customers.stream()
 					.filter(cust -> cust.getName().equals(customData.get("name")))
@@ -242,8 +241,10 @@ public class BankFrm extends javax.swing.JFrame
 				customer = currentFactoryAccount.createCustomer(customData);
 			}
 			
-			acc.setCustomer(customer);
-			customer.addAccount(acc);	
+			IAccount acc = currentFactoryAccount.createAccount(customData, customer);
+			
+//			acc.setCustomer(customer);
+//			customer.addAccount(acc);	
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
@@ -277,7 +278,6 @@ public class BankFrm extends javax.swing.JFrame
 			//create new account
 			String factoryType = "company" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
-			IAccount acc = currentFactoryAccount.createAccount(customData);
 			ICustomer customer = customers.stream()
 					.filter(cust -> cust.getName().equals(customData.get("name")))
 					.findFirst()
@@ -286,9 +286,8 @@ public class BankFrm extends javax.swing.JFrame
 			if (customer == null) {
 				customer = currentFactoryAccount.createCustomer(customData);
 			}
-			
-			acc.setCustomer(customer);
-			customer.addAccount(acc);
+
+			IAccount acc = currentFactoryAccount.createAccount(customData, customer);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
