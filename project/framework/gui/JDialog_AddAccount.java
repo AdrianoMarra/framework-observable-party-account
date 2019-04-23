@@ -26,7 +26,6 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 
-	IFactory factory;
 
 	public JDialog_AddAccount(FincoFrm thisframe) {
 		super(thisframe);
@@ -110,16 +109,16 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		Map<String, String> customerMap = new HashMap<>();
-		Map<String, String> accountMap = new HashMap<>();
+		parentFrame.customerMap = new HashMap<>();
+		parentFrame.accountMap = new HashMap<>();
 
-		customerMap.put("name", JTextField_NAME.getText());
-		customerMap.put("street", JTextField_STR.getText());
-		customerMap.put("city", JTextField_CT.getText());
-		customerMap.put("zip", JTextField_ZIP.getText());
-		customerMap.put("state", JTextField_ST.getText());
-		customerMap.put("email", JTextField_Email.getText());
-		accountMap.put("accNumber", JTextField_ACCNR.getText());
+		parentFrame.customerMap.put("name", JTextField_NAME.getText());
+		parentFrame.customerMap.put("street", JTextField_STR.getText());
+		parentFrame.customerMap.put("city", JTextField_CT.getText());
+		parentFrame.customerMap.put("zip", JTextField_ZIP.getText());
+		parentFrame.customerMap.put("state", JTextField_ST.getText());
+		parentFrame.customerMap.put("email", JTextField_Email.getText());
+		parentFrame.accountMap.put("accNumber", JTextField_ACCNR.getText());
 
 		parentFrame.newaccount = true;
 		dispose();
