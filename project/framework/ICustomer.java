@@ -3,7 +3,7 @@ package framework;
 import java.util.List;
 
 public interface ICustomer {
-	
+ 
 	List<IAccount> getAccountList();
 	
 	void addAccount(IAccount acc);
@@ -12,11 +12,7 @@ public interface ICustomer {
 
 	String getName();
 
-	void setName(String name);
-
-	String getAccNum();
-
-	void setAccNum(String accNum);
+	void setName(String name); 
 
 	String getStreet();
 

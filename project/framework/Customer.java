@@ -9,7 +9,6 @@ public class Customer implements ICustomer {
 	List<IAccount> accountList = new ArrayList<>();
 
 	private String name;
-	private String accNum;
 	private String street;
 	private String city;
 	private String state;
@@ -18,7 +17,6 @@ public class Customer implements ICustomer {
 
 	public Customer(HashMap<String, String> customerData) {
 		name = customerData.get("name");
-		accNum = customerData.get("accNum");
 		street = customerData.get("street");
 		city = customerData.get("city");
 		state = customerData.get("state");
@@ -26,11 +24,11 @@ public class Customer implements ICustomer {
 		email = customerData.get("email");
 	}
 
+	@Override
 	public void addAccount(IAccount acc) {
 		accountList.add(acc);
 	}
 
-	
 	@Override
 	public List<IAccount> getAccountList() {
 		return accountList;
@@ -47,14 +45,6 @@ public class Customer implements ICustomer {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getAccNum() {
-		return accNum;
-	}
-
-	public void setAccNum(String accNum) {
-		this.accNum = accNum;
 	}
 
 	public String getStreet() {
