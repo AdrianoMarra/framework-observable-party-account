@@ -13,13 +13,4 @@ public class CheckingsAccount extends Account {
 		super(accountData);
 		super.setInterest(5);
 	}
-
-	@Override
-	public void addInterest() {
-		double interest = super.getInterest();
-		double balance = super.getBalance();
-		double newBalance = ((interest/100) * balance) + balance;
-
-		super.setBalance(newBalance);
-	}
 }

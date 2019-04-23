@@ -44,6 +44,10 @@ public class TransactionProxy implements ITransaction {
 	public double getAmount() {
 		return transaction.getAmount();
 	}
-
+	
+	@Override
+	public ITransaction getTransaction() {
+		return transaction;
+	}
 
 }
