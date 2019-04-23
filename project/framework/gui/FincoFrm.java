@@ -230,10 +230,7 @@ public class FincoFrm extends javax.swing.JFrame {
 
 		for (int i = 0; i < rowdata.length - 2; i++) {
 			final int currentIndex = i;
-			ICustomer customer = customerList.stream()
-					.filter(x -> x.getName().equals(model.getValueAt(currentIndex, 0))).findFirst().orElse(null);
-			
-			IAccount acc = customer.getAccountList().stream()
+			IAccount acc = accountList.stream()
 					.filter(x -> x.getAccNumber().equals((String) model.getValueAt(currentIndex, 1))).findFirst()
 					.orElse(null);
 
