@@ -11,8 +11,8 @@ import java.util.HashMap;
 public class SilverAccount extends Account {
 
 
-    public SilverAccount(HashMap<String, String> map) {
-        super(map);
+    public SilverAccount(HashMap<String, String> accountData) {
+        super(accountData);
     }
 
     @Override

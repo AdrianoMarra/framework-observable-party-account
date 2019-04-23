@@ -22,7 +22,7 @@ public class Bank extends Default {
     private static void clickPersonalCreditCard() {
         HashMap<String, String> customData = new HashMap<>();
 
-        customData.put("accNum", "2122122");
+        customData.put("accNumber", "2122122");
         customData.put("name", "adriano");
         customData.put("street", "street test");
         customData.put("city", "city test");
@@ -35,7 +35,10 @@ public class Bank extends Default {
         IAccount silverAccount = currentFactory.createAccount(customData);
         ICustomer customer1 = currentFactory.createCustomer(customData);
 
+        customer1.addAccount(silverAccount);
+
         int debug = 1;
+
 
 
     }

@@ -14,10 +14,6 @@ public class Person extends Customer {
     }
 
 
-    @Override
-    public List<IAccount> getListAccount() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
 }

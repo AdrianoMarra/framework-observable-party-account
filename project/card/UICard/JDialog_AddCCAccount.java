@@ -3,6 +3,7 @@ package card.UICard;
 		A basic implementation of the JDialog class.
 */
 
+import javax.swing.*;
 import java.util.HashMap;
 
 public class JDialog_AddCCAccount extends javax.swing.JDialog {
@@ -22,6 +23,7 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
     javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
     javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
     javax.swing.JTextField JTextField_CCNR = new javax.swing.JTextField();
+
     javax.swing.JTextField JTextField_ExpDate = new javax.swing.JTextField();
     javax.swing.JButton JButton_OK = new javax.swing.JButton();
     javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
@@ -123,7 +125,14 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
         JButton_OK.addActionListener(lSymAction);
         JButton_Cancel.addActionListener(lSymAction);
         JRadioButton_Bronze.addMouseListener(aSymMouse);
-        //}}
+        if(CardFrm.debug){
+            JTextField_Email.setText("email");
+            JTextField_CCNR.setText("123");
+            JTextField_NAME.setText("emmanuell");
+            JTextField_ZIP.setText("zip");
+        }
+
+
     }
     //}}
 
@@ -156,29 +165,23 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
         parentframe.ccnumber = JTextField_CCNR.getText();
         parentframe.email = JTextField_Email.getText();
         parentframe.expdate = JTextField_ExpDate.getText();
-            String accType;
+
         if (JRadioButton_Gold.isSelected())
-            accType = "creditCardGold";
+            parentframe.accountType = "creditCardGold";
         else {
             if (JRadioButton_Silver.isSelected())
-                accType = "creditCardSilver";
+                parentframe.accountType = "creditCardSilver";
             else
-                accType = "creditCardBronze";
+                parentframe.accountType = "creditCardBronze";
         }
 
-        parentframe.accountType = accType;
-
-        parentframe.newaccount = true;
-
-        HashMap<String, String> customData = new HashMap<>();
-
-        customData.put("name", parentframe.clientName);
-        customData.put("accNum", parentframe.ccnumber);
-        customData.put("street", parentframe.street);
-        customData.put("city", parentframe.city);
-        customData.put("state", parentframe.state);
-        customData.put("zip", parentframe.zip);
-        customData.put("email", parentframe.email);
+        parentframe.customData.put("name", parentframe.clientName);
+        parentframe.customData.put("accNumber", parentframe.ccnumber);
+        parentframe.customData.put("street", parentframe.street);
+        parentframe.customData.put("city", parentframe.city);
+        parentframe.customData.put("state", parentframe.state);
+        parentframe.customData.put("zip", parentframe.zip);
+        parentframe.customData.put("email", parentframe.email);
 
 
         parentframe.newaccount = true;

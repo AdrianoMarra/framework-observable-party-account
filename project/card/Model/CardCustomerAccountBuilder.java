@@ -12,10 +12,13 @@ public class CardCustomerAccountBuilder extends AccountBuilder {
         switch (string) {
             case "creditCardGold":
                 factory = new GoldFactory();
+                break;
             case "creditCardSilver":
                 factory = new SilverFactory();
+                break;
             case "creditCardBronze":
                 factory = new BronzeFactory();
+                break;
             default:
                 break;
         }

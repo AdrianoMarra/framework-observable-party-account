@@ -1,6 +1,7 @@
 package card.UICard;
 
 import card.Model.CardCustomerAccountBuilder;
+import framework.Account;
 import framework.IAccount;
 import framework.ICustomer;
 import framework.IFactory;
@@ -26,8 +27,8 @@ public class CardFrm extends javax.swing.JFrame {
     String expdate;
     String ccnumber;
     String email;
-
     boolean newaccount;
+    static boolean debug = true;
 
     CardFrm thisframe;
 
@@ -173,22 +174,33 @@ public class CardFrm extends javax.swing.JFrame {
         ccac.setBounds(450, 20, 300, 380);
         ccac.show();
 
-
-
-
         if (newaccount) {
             // add row to table
             currentFactory = CardCustomerAccountBuilder.getFactoryAccount(accountType);
             IAccount account = currentFactory.createAccount(customData);
             ICustomer customer = currentFactory.createCustomer(customData);
 
+            String formated = "";
 
-            rowdata[0] = customer.getName();
-            rowdata[1] = account.getAccNumber();
-            rowdata[2] = customer.getEmail();
-            rowdata[3] = account.getAccNumber();
-            rowdata[4] = "0";
-            model.addRow(rowdata);
+            switch (accountType) {
+                case "creditCardGold":
+                    formated += "Gold";
+                    break;
+                case "creditCardSilver":
+                    formated += "Silver";
+                    break;
+                case "creditCardBronze":
+                    formated += "Bronze";
+                    break;
+                default:
+                    break;
+            }
+
+
+            customer.addAccount(account);
+            model.addRow(new Object[] { customer.getName(), account.getAccNumber() ,
+                customer.getEmail(), formated, "0"
+            });
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount = false;
         }
