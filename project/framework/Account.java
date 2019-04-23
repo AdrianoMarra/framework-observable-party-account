@@ -1,7 +1,6 @@
 package framework;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.DoublePredicate;
@@ -14,9 +13,11 @@ public class Account implements IAccount {
 	private double balance;
 	private double interest = 2;
 
-	public Account(HashMap<String, String> map) {
+	public Account(HashMap<String, String> map, ICustomer customer) {
 		this.accNumber = map.get("accNumber");
+		this.customer = customer;
  		this.balance = 0;
+ 		this.customer.addAccount(this);
 	}
 
 	@Override
@@ -79,8 +80,8 @@ public class Account implements IAccount {
 	public void addTransaction(ITransaction transaction) {
 		transactions.add(transaction);
 	}
-
-	@Override
+  
+  @Override
 	public String report(Date date) {
 		return "";
 	}

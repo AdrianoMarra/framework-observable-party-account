@@ -206,8 +206,7 @@ public class FincoFrm extends javax.swing.JFrame {
 
 		if (newaccount) {
 			ICustomer customer = factory.createCustomer(customerMap);
-			IAccount account = factory.createAccount(accountMap);
-			customer.addAccount(account);
+			IAccount account = factory.createAccount(accountMap, customer);
 			customerList.add(customer);
 			accountList.add(account);
 			accountsManager.addAccount(account);
