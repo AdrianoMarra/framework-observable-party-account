@@ -20,7 +20,7 @@ public interface IAccount
 
 	void setBalance(double balance);
 	
-	public void setInterest(Integer interest);
+	public void setInterest(double interest);
 
 	public double getInterest();
 

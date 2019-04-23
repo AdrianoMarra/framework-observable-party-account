@@ -47,7 +47,7 @@ public class Account implements IAccount {
 	}
 	
 	@Override
-	public void setInterest(Integer interest) {
+	public void setInterest(double interest) {
 		this.interest = interest;
 	}
 	

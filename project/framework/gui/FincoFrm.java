@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,18 +20,19 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import bank.bankUI.BankFrm;
+import bank.model.AccountsInterestManager;
 import framework.Account;
 import framework.AccountBuilder;
 import framework.Customer;
 import framework.IAccount;
 import framework.ICustomer;
-import framework.IFactory;
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
+import framework.IFactory; 
 
 public class FincoFrm extends javax.swing.JFrame {
 
 	boolean newaccount;
 	double amountDeposit;
+	AccountsInterestManager accountsManager = new AccountsInterestManager();
 	static List<ICustomer> customerList = new ArrayList<>();
 	static List<IAccount> accountList = new ArrayList<>();
 	HashMap<String, String> customerMap;
@@ -42,12 +44,12 @@ public class FincoFrm extends javax.swing.JFrame {
 	private Object rowdata[];
 	private IFactory factory;
 
-
 	javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
 	javax.swing.JButton JButton_NewAccount = new javax.swing.JButton();
 	javax.swing.JButton JButton_GenReport = new javax.swing.JButton();
 	javax.swing.JButton JButton_Transaction = new javax.swing.JButton();
 	javax.swing.JButton JButton_Exit = new javax.swing.JButton();
+	javax.swing.JButton JButton_Addinterest = new javax.swing.JButton();
 
 	public FincoFrm() {
 		thisframe = this;
@@ -97,8 +99,11 @@ public class FincoFrm extends javax.swing.JFrame {
 		JButton_Transaction.setBounds(468, 104, 110, 33);
 		JButton_Exit.setText("Exit");
 		JPanel1.add(JButton_Exit);
-		JButton_Exit.setBounds(468, 248, 96, 31);
+		JButton_Exit.setBounds(468, 248, 110, 31);
 		JButton_GenReport.setActionCommand("jbutton");
+		JButton_Addinterest.setBounds(468, 20, 110, 33);
+		JButton_Addinterest.setText("Add interest");
+		JPanel1.add(JButton_Addinterest);
 
 		SymWindow aSymWindow = new SymWindow();
 		this.addWindowListener(aSymWindow);
@@ -107,6 +112,7 @@ public class FincoFrm extends javax.swing.JFrame {
 		JButton_GenReport.addActionListener(ISymAction);
 		JButton_NewAccount.addActionListener(ISymAction);
 		JButton_Transaction.addActionListener(ISymAction);
+		JButton_Addinterest.addActionListener(ISymAction);
 
 		// getting factory
 		factory = AccountBuilder.getFactoryAccount("");
@@ -153,6 +159,9 @@ public class FincoFrm extends javax.swing.JFrame {
 				JButtonGenReport_actionPerformed(e);
 			else if (object == JButton_Transaction)
 				JButtonTransaction_actionPerformed(e);
+			else if (object == JButton_Addinterest)
+				JButtonAddinterest_actionPerformed(e);
+
 		}
 	}
 
@@ -161,10 +170,10 @@ public class FincoFrm extends javax.swing.JFrame {
 
 		if (selection >= 0) {
 			String name = (String) model.getValueAt(selection, 0);
-			String accNumber = (String)model.getValueAt(selection, 1);
-			IAccount found = accountList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst().orElse(null);
-			
-			
+			String accNumber = (String) model.getValueAt(selection, 1);
+			IAccount found = accountList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+					.orElse(null);
+
 			// Show the dialog for adding deposit amount for the current mane
 			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name, found);
 			dep.setBounds(430, 15, 275, 160);
@@ -173,7 +182,7 @@ public class FincoFrm extends javax.swing.JFrame {
 
 			// compute new amount
 			double deposit = found.getBalance();
-			double samount = Double.parseDouble((String)model.getValueAt(selection, 2));
+			double samount = Double.parseDouble((String) model.getValueAt(selection, 2));
 			double currentamount = samount;
 			double newamount = currentamount + deposit;
 
@@ -201,7 +210,8 @@ public class FincoFrm extends javax.swing.JFrame {
 			customerList.add(customer);
 			accountList.add(account);
 
-			model.addRow(new Object[] { customer.getName(), account.getAccNumber(), Double.toString(account.getBalance()) });
+			model.addRow(
+					new Object[] { customer.getName(), account.getAccNumber(), Double.toString(account.getBalance()) });
 			JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 			newaccount = false;
 			customerMap.clear();
@@ -211,6 +221,12 @@ public class FincoFrm extends javax.swing.JFrame {
 
 	void JButtonExit_actionPerformed(ActionEvent e) {
 		System.exit(0);
+	}
+
+	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
+		accountsManager.notifyAccounts();
+		JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts",
+				"Add interest to all accounts", JOptionPane.WARNING_MESSAGE);
 	}
 
 	public static void main(String[] args) {
