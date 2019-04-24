@@ -8,7 +8,6 @@ public class Transaction implements ITransaction {
 	private Date date;
 	private IAccount currentAccount;
 	
-	
 	public Transaction(IAccount account, double amount) {
 		this.currentAccount = account;
 		this.amount = amount;
