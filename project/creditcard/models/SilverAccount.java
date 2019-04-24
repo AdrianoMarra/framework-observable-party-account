@@ -9,8 +9,8 @@ import framework.models.ITransaction;
 
 public class SilverAccount extends CreditCardAccount {
 
-	public SilverAccount(HashMap<String, String> accountData, ICustomer customer) {
-		super(accountData, customer);
+	public SilverAccount(HashMap<String, String> accountData, Person person) {
+		super(accountData, person);
 		setInterest(Double.valueOf(0.08));
 		setInterestMinimumPayment(0.12);
 	}

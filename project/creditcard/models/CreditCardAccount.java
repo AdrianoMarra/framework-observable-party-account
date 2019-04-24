@@ -11,8 +11,8 @@ public class CreditCardAccount extends Account {
 	double interestMonthlyPayment;
 	double interestMinimumPayment;
 
-	public CreditCardAccount(HashMap<String, String> map, ICustomer customer) {
-		super(map, customer);
+	public CreditCardAccount(HashMap<String, String> map, Person person) {
+		super(map, person);
 	}
 
 //    @Override

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.swing.JDialog;
 
+import framework.finco;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
@@ -27,25 +28,20 @@ public class JDialog_GenerateReport extends JDialog {
 		JButton_OK.setActionCommand("OK");
 		getContentPane().add(JButton_OK);
 		JButton_OK.setBounds(296, 276, 196, 24);
-		
-		
-		for (ICustomer customer : FincoFrm.customerList) {
+
+		for (ICustomer customer : finco.customerList) {
 			reportString += "Name = " + customer.getName() + "\n";
-			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState() + "," + customer.getZip() + "\n";
-			
-			for (IAccount acc : customer.getAccountList()) 
-			{
+			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState()
+					+ "," + customer.getZip() + "\n";
+
+			for (IAccount acc : customer.getAccountList()) {
 				reportString += "Account Number = " + acc.getAccNumber() + "\n";
-				reportString += "Amount = $" + acc.getBalance();				
+				reportString += "Amount = $" + acc.getBalance();
 			}
-			
+
 			reportString += "\n-----------------------------------\n";
-		}	
+		}
 
-	
-		
-
- 
 		JTextField1.setText(reportString);
 
 		SymAction lSymAction = new SymAction();
@@ -65,4 +61,3 @@ public class JDialog_GenerateReport extends JDialog {
 	}
 
 }
-

@@ -1,6 +1,10 @@
 package creditcard.views;
 
 import creditcard.models.Charge;
+import creditcard.models.ChargeProxy;
+import creditcard.models.CreditCardAccount;
+import creditcard.models.CreditCardTransaction;
+import creditcard.models.CreditCardTransactionManager;
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
@@ -17,13 +21,13 @@ public class ChargeView extends javax.swing.JDialog {
 	private JTextField JTextField_AMT = new JTextField();
 	private JButton JButton_OK = new JButton();
 	private JButton JButton_Calcel = new JButton();
-	private ccard parentframe;
+	private CardView parentframe;
 	private String name;
-	private IAccount acc;
-	ITransactionManager transactionManager = new TransactionManager();
+	private CreditCardAccount acc;
+	CreditCardTransactionManager transactionManager = new CreditCardTransactionManager();
 
 
-	public ChargeView(ccard parent, String aname, IAccount acc) {
+	public ChargeView(CardView parent, String aname, CreditCardAccount acc) {
 		super(parent);
 		this.parentframe = parent;
 		this.name = aname;
@@ -71,8 +75,8 @@ public class ChargeView extends javax.swing.JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		ITransaction transaction = new Charge(acc, Double.parseDouble(JTextField_AMT.getText())); 	
- 		transaction = new TransactionProxy(transaction);
+		CreditCardTransaction transaction = new Charge(acc, Double.parseDouble(JTextField_AMT.getText())); 	
+ 		transaction = new ChargeProxy(transaction, transaction.getAccount(), transaction.getAmount());
  		transactionManager.setTransaction(transaction);
  		transactionManager.execute();
  		

@@ -27,9 +27,9 @@ public class AddCCAccountView extends javax.swing.JDialog {
     private JRadioButton JRadioButton_Bronze = new JRadioButton();
     private JLabel JLabel7 = new JLabel();
     private JTextField JTextField_Email = new JTextField();
-    private ccard parentframe;
+    private CardView parentframe;
 
-    public AddCCAccountView(ccard thisframe) {
+    public AddCCAccountView(CardView thisframe) {
         super(thisframe);
         parentframe = thisframe;
 

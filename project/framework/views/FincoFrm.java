@@ -6,35 +6,26 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-import banking.views.bank;
-import framework.models.Account;
+import framework.finco;
 import framework.models.AccountBuilder;
-import framework.models.Customer;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 import framework.models.IFactory;
-import framework.models.InterestManager;
 
 public class FincoFrm extends javax.swing.JFrame {
 
 	boolean newaccount;
 	double amountDeposit;
-	InterestManager accountsManager = new InterestManager();
-	static List<ICustomer> customerList = new ArrayList<>();
- 	HashMap<String, String> customerMap;
+
+	HashMap<String, String> customerMap;
 	HashMap<String, String> accountMap;
 	private JTable JTable1;
 	private JScrollPane JScrollPane1;
@@ -43,12 +34,12 @@ public class FincoFrm extends javax.swing.JFrame {
 	private Object rowdata[];
 	private IFactory factory;
 
-	javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
-	javax.swing.JButton JButton_NewAccount = new javax.swing.JButton();
-	javax.swing.JButton JButton_GenReport = new javax.swing.JButton();
-	javax.swing.JButton JButton_Transaction = new javax.swing.JButton();
-	javax.swing.JButton JButton_Exit = new javax.swing.JButton();
-	javax.swing.JButton JButton_Addinterest = new javax.swing.JButton();
+	private javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
+	private javax.swing.JButton JButton_NewAccount = new javax.swing.JButton();
+	private javax.swing.JButton JButton_GenReport = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Transaction = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Exit = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Addinterest = new javax.swing.JButton();
 
 	public FincoFrm() {
 		thisframe = this;
@@ -170,8 +161,8 @@ public class FincoFrm extends javax.swing.JFrame {
 		if (selection >= 0) {
 			String name = (String) model.getValueAt(selection, 0);
 			String accNumber = (String) model.getValueAt(selection, 1);
-			IAccount found = accountsManager.getAccounts().stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
-					.orElse(null);
+			IAccount found = finco.accountsManager.getAccounts().stream()
+					.filter(x -> x.getAccNumber().equals(accNumber)).findFirst().orElse(null);
 
 			// Show the dialog for adding deposit amount for the current mane
 			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name, found);
@@ -205,10 +196,9 @@ public class FincoFrm extends javax.swing.JFrame {
 		if (newaccount) {
 			ICustomer customer = factory.createCustomer(customerMap);
 			IAccount account = factory.createAccount(accountMap, customer);
-									
-			customerList.add(customer);
-			accountsManager.getAccounts().add(account);
-			accountsManager.addAccount(account);
+
+			finco.customerList.add(customer);
+			finco.accountsManager.addAccount(account);
 
 			model.addRow(
 					new Object[] { customer.getName(), account.getAccNumber(), Double.toString(account.getBalance()) });
@@ -224,10 +214,10 @@ public class FincoFrm extends javax.swing.JFrame {
 	}
 
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
-		accountsManager.updateAccountsInterest();
+		finco.accountsManager.updateAccountsInterest();
 
-		for (int i = 0; i < accountsManager.getAccounts().size() - 1; i++)
-			model.setValueAt(String.valueOf(accountsManager.getAccounts().get(i).getBalance()), i, 2);
+		for (int i = 0; i < finco.accountsManager.getAccounts().size(); i++)
+			model.setValueAt(String.valueOf(finco.accountsManager.getAccounts().get(i).getBalance()), i, 2);
 
 		JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts",
 				"Add interest to all accounts", JOptionPane.WARNING_MESSAGE);

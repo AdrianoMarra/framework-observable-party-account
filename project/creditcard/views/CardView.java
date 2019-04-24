@@ -1,6 +1,9 @@
 package creditcard.views;
 
 import creditcard.models.CardCustomerAccountBuilder;
+import creditcard.models.CreditCardAccount;
+import creditcard.models.CreditCardFactory;
+import creditcard.models.Person;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 import framework.models.IFactory;
@@ -15,16 +18,16 @@ import java.util.List;
 /**
  * A basic JFC based application.
  **/
-public class ccard extends javax.swing.JFrame {
+public class CardView extends javax.swing.JFrame {
     protected HashMap<String, String> customData = new HashMap<>();
     private String interest = "0.0";
     protected boolean newaccount;
     private static boolean debug = true;
-    private static List<IAccount> accountsList = new ArrayList<>();
-    protected static List<ICustomer> customersList = new ArrayList<>();
-    private ccard thisframe;
+    private static List<CreditCardAccount> accountsList = new ArrayList<>();
+    protected static List<Person> customersList = new ArrayList<>();
+    private CardView thisframe;
     protected String accountType;
-    private static IFactory currentFactory;
+    private static CreditCardFactory currentFactory;
     private JPanel JPanel1 = new JPanel();
     private JButton JButton_NewCCAccount = new JButton();
     private JButton JButton_GenBill = new JButton();
@@ -36,7 +39,7 @@ public class ccard extends javax.swing.JFrame {
     private JScrollPane JScrollPane1;
     private Object rowdata[];
 
-    public ccard() {
+    public CardView() {
         thisframe = this;
         setTitle("Credit-card processing Application.");
         setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
@@ -107,7 +110,7 @@ public class ccard extends javax.swing.JFrame {
             } catch (Exception e) {
             }
             // Create a new instance of our application's frame, and make it visible.
-            (new ccard()).setVisible(true);
+            (new CardView()).setVisible(true);
         } catch (Throwable t) {
             t.printStackTrace();
             // Ensure the application exits with an error condition.
@@ -155,8 +158,8 @@ public class ccard extends javax.swing.JFrame {
             // add row to table
             customData.put("interest", interest);
             currentFactory = CardCustomerAccountBuilder.getFactoryAccount(accountType);
-            ICustomer customer = currentFactory.createCustomer(customData);
-            IAccount account = currentFactory.createAccount(customData, customer);
+            Person customer = currentFactory.createCustomer(customData);
+            CreditCardAccount account = currentFactory.createAccount(customData, customer);
             String formated = "";
             switch (accountType) {
                 case "creditCardGold":
@@ -193,7 +196,7 @@ public class ccard extends javax.swing.JFrame {
         if (selection >= 0) {
             String name = (String) model.getValueAt(selection, 0);
             String accNumber = (String) model.getValueAt(selection, 1);
-            IAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+            CreditCardAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
                     .orElse(null);
             // Show the dialog for adding deposit amount for the current mane
             DepositView dep = new DepositView(thisframe, name, found);
@@ -212,7 +215,7 @@ public class ccard extends javax.swing.JFrame {
         if (selection >= 0) {
             String name = (String) model.getValueAt(selection, 0);
             String accNumber = (String) model.getValueAt(selection, 1);
-            IAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+            CreditCardAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
                     .orElse(null);
             // Show the dialog for adding withdraw amount for the current mane
             ChargeView wd = new ChargeView(thisframe, name, found);
@@ -228,7 +231,7 @@ public class ccard extends javax.swing.JFrame {
     class SymWindow extends java.awt.event.WindowAdapter {
         public void windowClosing(java.awt.event.WindowEvent event) {
             Object object = event.getSource();
-            if (object == ccard.this)
+            if (object == CardView.this)
                 BankFrm_windowClosing(event);
         }
     }

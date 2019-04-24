@@ -3,10 +3,8 @@ package creditcard.models;
 import java.util.HashMap;
 
 import framework.models.CustomerAccountFactory;
-import framework.models.IAccount;
-import framework.models.ICustomer;
 
-public class SilverFactory extends CreditCardFactory  {
+public class CreditCardFactory extends CustomerAccountFactory {
 
 	@Override
 	public Person createCustomer(HashMap<String, String> customerData) {
@@ -14,7 +12,7 @@ public class SilverFactory extends CreditCardFactory  {
 	}
 
 	public CreditCardAccount createAccount(HashMap<String, String> accountData, Person person) {
-		return new SilverAccount(accountData, person);
+		return new CreditCardAccount(accountData, person);
 	}
 
 }

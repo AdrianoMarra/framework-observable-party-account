@@ -40,7 +40,7 @@ public class GenBillView extends javax.swing.JDialog {
 		getContentPane().add(JButton_OK);
 		JButton_OK.setBounds(296, 276, 196, 24);
 		
- 		for (ICustomer customer : ccard.customersList) {
+ 		for (ICustomer customer : CardView.customersList) {
 			reportString += "Name = " + customer.getName() + "\n";
 			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState()
 					+ "," + customer.getZip() + "\n";

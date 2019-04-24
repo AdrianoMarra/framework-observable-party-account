@@ -6,12 +6,10 @@ import framework.models.Account;
 import framework.models.ICustomer;
 
 public class BronzeAccount extends CreditCardAccount {
-    public BronzeAccount(HashMap<String, String> map, ICustomer customer) 
-    {
-        super(map, customer);
-        setInterest(0.10);
-        setInterestMinimumPayment(0.14);        
-    }
-    
-    
+	public BronzeAccount(HashMap<String, String> map, Person person) {
+		super(map, person);
+		setInterest(0.10);
+		setInterestMinimumPayment(0.14);
+	}
+
 }

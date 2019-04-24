@@ -22,9 +22,9 @@ public class AddCompAccView extends javax.swing.JDialog {
     private JTextField JTextField_EM = new JTextField();
     private JButton JButton_OK = new JButton();
     private JButton JButton_Calcel = new JButton();
-    private ccard parentframe;
+    private CardView parentframe;
 
-    public AddCompAccView(ccard parent) {
+    public AddCompAccView(CardView parent) {
         super(parent);
         parentframe = parent;
 
