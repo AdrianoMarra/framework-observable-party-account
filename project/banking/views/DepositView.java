@@ -11,16 +11,21 @@ import framework.models.Transaction;
 import framework.models.TransactionManager;
 import framework.models.TransactionProxy;
 
-public class JDialog_Deposit extends javax.swing.JDialog
+public class DepositView extends javax.swing.JDialog
 {
-    
-
-    private BankFrm parentframe;
+    private bank parentframe;
     private String accnr;
-	ITransactionManager transactionManager = new TransactionManager();
+	private ITransactionManager transactionManager = new TransactionManager();
 	private IAccount acc;
     
-	public JDialog_Deposit(BankFrm parent, String aaccnr, IAccount acc)
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
+	private javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
+	
+	public DepositView(bank parent, String aaccnr, IAccount acc)
 	{
 		super(parent);
 		parentframe=parent;
@@ -69,18 +74,6 @@ public class JDialog_Deposit extends javax.swing.JDialog
 		//}}
 	}
 
-
-
-	//{{DECLARE_CONTROLS
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
-	//}}
-
-
 	class SymAction implements java.awt.event.ActionListener
 	{
 		public void actionPerformed(java.awt.event.ActionEvent event)
@@ -93,7 +86,7 @@ public class JDialog_Deposit extends javax.swing.JDialog
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{		
  		ITransaction transaction = new AccountDepositTransaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
  		transaction = new AccountDepositProxy(transaction);  		
@@ -103,7 +96,7 @@ public class JDialog_Deposit extends javax.swing.JDialog
         dispose();
 	}
 
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		dispose();
 	}
