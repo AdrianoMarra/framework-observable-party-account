@@ -34,6 +34,7 @@ public class CardFrm extends javax.swing.JFrame {
 	String email;
 	String interest = "0.0";
 	boolean newaccount;
+	boolean updateview;
 	static boolean debug = true;
 	static List<IAccount> accountsList = new ArrayList<>();
 	static List<ICustomer> customersList = new ArrayList<>();
@@ -59,11 +60,11 @@ public class CardFrm extends javax.swing.JFrame {
 		setTitle("Credit-card processing Application.");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		setSize(575, 400);
+		setSize(600, 320);
 		setVisible(false);
 		JPanel1.setLayout(null);
 		getContentPane().add(BorderLayout.CENTER, JPanel1);
-		JPanel1.setBounds(0, 0, 575, 400);
+		JPanel1.setBounds(0, 0, 600, 320);
 		/*
 		 * /Add five buttons on the pane /for Adding personal account, Adding company
 		 * account /Deposit, Withdraw and Exit from the system
@@ -100,7 +101,7 @@ public class CardFrm extends javax.swing.JFrame {
 		JButton_Charge.setBounds(468, 164, 96, 33);
 		JButton_Exit.setText("Exit");
 		JPanel1.add(JButton_Exit);
-		JButton_Exit.setBounds(468, 248, 96, 31);
+		JButton_Exit.setBounds(468, 218, 96, 31);
 
 		JButton_GenBill.setActionCommand("jbutton");
 
@@ -112,6 +113,9 @@ public class CardFrm extends javax.swing.JFrame {
 		JButton_GenBill.addActionListener(lSymAction);
 		JButton_Deposit.addActionListener(lSymAction);
 		JButton_Charge.addActionListener(lSymAction);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
 	}
 
@@ -173,7 +177,8 @@ public class CardFrm extends javax.swing.JFrame {
 		 */
 
 		JDialog_AddCCAccount ccac = new JDialog_AddCCAccount(thisframe);
-		ccac.setBounds(450, 20, 300, 380);
+		ccac.setBounds(450, 20, 300, 400);
+		ccac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		ccac.show();
 
 		if (newaccount) {
@@ -198,8 +203,8 @@ public class CardFrm extends javax.swing.JFrame {
 			default:
 				break;
 			}
-
 			customersList.add(customer);
+			
 			accountsList.add(account);
 			model.addRow(
 					new Object[] { customer.getName(), account.getAccNumber(), customer.getEmail(), formated, "0" });
@@ -210,12 +215,10 @@ public class CardFrm extends javax.swing.JFrame {
 	}
 
 	void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event) {
-		JDialogGenBill billFrm = new JDialogGenBill();
-		billFrm.setBounds(450, 20, 400, 350);
-		billFrm.show();
-
-		for (int i = 0; i < accountsList.size() - 1; i++)
-			model.setValueAt(String.valueOf(accountsList.get(i).getBalance()), i, 2);
+		JDialogGenBill billFrm = new JDialogGenBill();		
+		billFrm.setBounds(450, 20, 810, 350);
+		billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
+		billFrm.show(); 	
 	}
 
 	void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event) {
@@ -228,7 +231,7 @@ public class CardFrm extends javax.swing.JFrame {
 					.orElse(null);
 			// Show the dialog for adding deposit amount for the current mane
 			JDialog_Deposit dep = new JDialog_Deposit(thisframe, name, found);
-			dep.setBounds(430, 15, 275, 140);
+			dep.setBounds(430, 15, 275, 170);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			dep.show();
 
@@ -249,7 +252,7 @@ public class CardFrm extends javax.swing.JFrame {
 
 			// Show the dialog for adding withdraw amount for the current mane
 			JDialog_Charge wd = new JDialog_Charge(thisframe, name, found);
-			wd.setBounds(430, 15, 275, 140);
+			wd.setBounds(430, 15, 275, 170);
 			wd.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			wd.show();
 

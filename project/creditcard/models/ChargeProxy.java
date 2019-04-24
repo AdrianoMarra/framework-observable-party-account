@@ -24,7 +24,7 @@ public class ChargeProxy extends TransactionProxy {
 	
 	@Override
 	public void Post() {
-		IEmailManager.sendEmail("Because the amount is greater than 400...");
+		IEmailManager.sendEmail("Executing\n Email sent because the amount is greater than 400!!");
 	}
 
 }

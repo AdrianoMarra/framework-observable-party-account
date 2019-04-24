@@ -10,6 +10,7 @@ public class BronzeAccount extends CreditCardAccount {
     {
         super(map, customer);
         setInterest(0.10);
+        setInterestMinimumPayment(0.14);        
     }
     
     

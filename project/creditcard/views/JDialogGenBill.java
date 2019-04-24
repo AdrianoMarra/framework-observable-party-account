@@ -12,7 +12,7 @@ import framework.views.FincoFrm;
 
 public class JDialogGenBill extends javax.swing.JDialog {
 
-	String reportString;
+	String reportString = "";
 	// {{DECLARE_CONTROLS
 	javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
 	javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
@@ -31,20 +31,22 @@ public class JDialogGenBill extends javax.swing.JDialog {
 		setSize(405, 367);
 		setVisible(false);
 		getContentPane().add(JScrollPane1);
-		JScrollPane1.setBounds(24, 24, 358, 240);
+		JScrollPane1.setBounds(24, 24, 758, 240);
 		JScrollPane1.getViewport().add(JTextField1);
-		JTextField1.setBounds(0, 0, 355, 237);
+		JTextField1.setBounds(0, 0, 755, 237);
 		JButton_OK.setText("OK");
 		JButton_OK.setActionCommand("OK");
 		getContentPane().add(JButton_OK);
-		JButton_OK.setBounds(156, 276, 96, 24);
-
-		for (ICustomer customer : CardFrm.customersList) {
-			reportString = "Name = " + customer.getName() + "\n";
+		JButton_OK.setBounds(296, 276, 196, 24);
+		
+ 		for (ICustomer customer : CardFrm.customersList) {
+			reportString += "Name = " + customer.getName() + "\n";
 			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState()
 					+ "," + customer.getZip() + "\n";
 			for (IAccount account : customer.getAccountList())
-				reportString += account.report(new Date());			
+				reportString += account.report(new Date()) + "\n";		
+			
+			reportString += "-----------------------------------\n";
 		}
 
 		JTextField1.setText(reportString);

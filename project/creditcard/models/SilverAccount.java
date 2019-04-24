@@ -12,6 +12,7 @@ public class SilverAccount extends CreditCardAccount {
 	public SilverAccount(HashMap<String, String> accountData, ICustomer customer) {
 		super(accountData, customer);
 		setInterest(Double.valueOf(0.08));
+		setInterestMinimumPayment(0.12);
 	}
 
 	@Override

@@ -1,6 +1,9 @@
 package creditcard.views;
 
 import creditcard.models.Deposit;
+import javax.swing.JOptionPane;
+
+import creditcard.models.Deposit; 
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
@@ -21,7 +24,6 @@ public class JDialog_Deposit extends javax.swing.JDialog {
 	private String name;
 	private IAccount acc;
 	ITransactionManager transactionManager = new TransactionManager();
-
 
 	public JDialog_Deposit(CardFrm parent, String aname, IAccount acc) {
 		super(parent);
@@ -82,11 +84,19 @@ public class JDialog_Deposit extends javax.swing.JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
- 		ITransaction transaction = new Deposit(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
- 		transaction = new TransactionProxy(transaction);
- 		transactionManager.setTransaction(transaction);
- 		transactionManager.execute();
- 		
+		double newBalance = acc.getBalance() - Double.parseDouble(JTextField_Deposit.getText());
+		if (newBalance < 0) {
+			JOptionPane.showMessageDialog(this,
+					"You are not able to do a deposit because your balance is going to get negative.", "Information",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		ITransaction transaction = new Deposit(acc, Double.parseDouble(JTextField_Deposit.getText()));
+		transaction = new TransactionProxy(transaction);
+		transactionManager.setTransaction(transaction);
+		transactionManager.execute();
+
 		dispose();
 	}
 
