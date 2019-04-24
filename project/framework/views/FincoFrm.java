@@ -165,7 +165,7 @@ public class FincoFrm extends javax.swing.JFrame {
 					.filter(x -> x.getAccNumber().equals(accNumber)).findFirst().orElse(null);
 
 			// Show the dialog for adding deposit amount for the current mane
-			JDialog_Transaction dep = new JDialog_Transaction(thisframe, name, found);
+			TransactionView dep = new TransactionView(thisframe, name, found);
 			dep.setBounds(430, 15, 275, 160);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 			dep.show();
@@ -181,14 +181,14 @@ public class FincoFrm extends javax.swing.JFrame {
 	}
 
 	void JButtonGenReport_actionPerformed(ActionEvent e) {
-		JDialog_GenerateReport billFrm = new JDialog_GenerateReport(thisframe);
+		GenerateReportView billFrm = new GenerateReportView(thisframe);
 		billFrm.setBounds(450, 20, 810, 350);
 		billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 		billFrm.show();
 	}
 
 	void JButtonAcc_actionPerformed(ActionEvent e) {
-		JDialog_AddAccount fincoAcc = new JDialog_AddAccount(thisframe);
+		AddAccountView fincoAcc = new AddAccountView(thisframe);
 		fincoAcc.setBounds(450, 20, 300, 300);
 		fincoAcc.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 		fincoAcc.show();

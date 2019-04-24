@@ -8,14 +8,14 @@ import framework.finco;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
-public class JDialog_GenerateReport extends JDialog {
+public class GenerateReportView extends JDialog {
 
 	javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
 	javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	String reportString = "";
 
-	public JDialog_GenerateReport(FincoFrm parent) {
+	public GenerateReportView(FincoFrm parent) {
 		super(parent);
 		getContentPane().setLayout(null);
 		setSize(405, 367);
