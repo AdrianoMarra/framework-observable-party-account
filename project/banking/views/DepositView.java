@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import banking.models.AccountDepositProxy;
 import banking.models.AccountDepositTransaction;
+import banking.models.BankAccount;
+import banking.models.BankTransaction;
+import banking.models.BankTransactionManager;
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
@@ -15,8 +18,8 @@ public class DepositView extends javax.swing.JDialog
 {
     private bank parentframe;
     private String accnr;
-	private ITransactionManager transactionManager = new TransactionManager();
-	private IAccount acc;
+	private BankTransactionManager transactionManager = new BankTransactionManager();
+	private BankAccount acc;
     
 	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
@@ -25,7 +28,7 @@ public class DepositView extends javax.swing.JDialog
 	private javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 	private javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
 	
-	public DepositView(bank parent, String aaccnr, IAccount acc)
+	public DepositView(bank parent, String aaccnr, BankAccount acc)
 	{
 		super(parent);
 		parentframe=parent;
@@ -88,7 +91,7 @@ public class DepositView extends javax.swing.JDialog
 
 	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{		
- 		ITransaction transaction = new AccountDepositTransaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
+ 		BankTransaction transaction = new AccountDepositTransaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
  		transaction = new AccountDepositProxy(transaction);  		
  		transactionManager.setTransaction(transaction);
  		transactionManager.execute();

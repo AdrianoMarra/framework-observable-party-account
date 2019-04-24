@@ -1,12 +1,11 @@
 package banking.models;
 
 import framework.models.AccountBuilder;
-import framework.models.IFactory;
 
 public class BankCustomerAccountsBuilder extends AccountBuilder {
 
-	public static IFactory getFactoryAccount(String string) {
-		IFactory factory = null;
+	public static BankCustomerAccountFactory getFactoryAccount(String string) {
+		BankCustomerAccountFactory factory = null;
 
 		switch (string) {
 		case "personalCheckings":

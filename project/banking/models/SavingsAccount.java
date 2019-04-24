@@ -1,16 +1,10 @@
 package banking.models;
 
 import java.util.HashMap;
-import java.util.List;
 
-import framework.models.Account;
-import framework.models.IAccount;
-import framework.models.ICustomer;
-import framework.models.ITransaction;
-
-public class SavingsAccount extends Account {
+public class SavingsAccount extends BankAccount {
 	
-	public SavingsAccount(HashMap<String, String> accountData, ICustomer customer) {
+	public SavingsAccount(HashMap<String, String> accountData, BankCustomer customer) {
 		super(accountData, customer);
 		super.setInterest(10);
 	}

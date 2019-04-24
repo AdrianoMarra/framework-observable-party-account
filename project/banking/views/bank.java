@@ -7,7 +7,11 @@ import java.util.HashMap;
 
 import javax.swing.table.DefaultTableModel;
 
+import banking.models.BankAccount;
+import banking.models.BankCustomer;
+import banking.models.BankCustomerAccountFactory;
 import banking.models.BankCustomerAccountsBuilder;
+import banking.models.BankInterestManager;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 import framework.models.IFactory;
@@ -35,10 +39,10 @@ public class bank extends javax.swing.JFrame
     private bank myframe;
     private Object rowdata[];
     
-	private static IFactory currentFactoryAccount;
+	private static BankCustomerAccountFactory currentFactoryAccount;
 	protected HashMap<String, String> customData = new HashMap<>();
-	private List<ICustomer> customers = new ArrayList<>();
-	private InterestManager accountsManager = new InterestManager();
+	private List<BankCustomer> customers = new ArrayList<>();
+	private BankInterestManager accountsManager = new BankInterestManager();
 	
 	private javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
 	private javax.swing.JButton JButton_PerAC = new javax.swing.JButton();
@@ -229,7 +233,7 @@ public class bank extends javax.swing.JFrame
 			String factoryType = "personal" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			
-			ICustomer customer = customers.stream()
+			BankCustomer customer = customers.stream()
 					.filter(cust -> cust.getName().equals(customData.get("name")) 
 							&& cust.getClass().getSimpleName().equals("Person"))
 					.findFirst()
@@ -239,7 +243,7 @@ public class bank extends javax.swing.JFrame
 				customer = currentFactoryAccount.createCustomer(customData);
 			}
 						
-			IAccount acc = currentFactoryAccount.createAccount(customData, customer);
+			BankAccount acc = currentFactoryAccount.createAccount(customData, customer);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
@@ -273,7 +277,7 @@ public class bank extends javax.swing.JFrame
 			//create new account
 			String factoryType = "company" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
-			ICustomer customer = customers.stream()
+			BankCustomer customer = customers.stream()
 					.filter(cust -> cust.getName().equals(customData.get("name"))
 							&& cust.getClass().getSimpleName().equals("Company"))
 					.findFirst()
@@ -283,7 +287,7 @@ public class bank extends javax.swing.JFrame
 				customer = currentFactoryAccount.createCustomer(customData);
 			}
 
-			IAccount acc = currentFactoryAccount.createAccount(customData, customer);
+			BankAccount acc = currentFactoryAccount.createAccount(customData, customer);
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
@@ -309,7 +313,7 @@ public class bank extends javax.swing.JFrame
 		if (selection >= 0) {
 			String accNumber = (String) model.getValueAt(selection, 0);
 			
-			IAccount found = accountsManager.getAccounts()
+			BankAccount found = accountsManager.getListAccounts()
 					.stream().filter(x -> x.getAccNumber().equals(accNumber))
 					.findFirst()
 					.orElse(null);
@@ -334,7 +338,7 @@ public class bank extends javax.swing.JFrame
 		if (selection >= 0) {
 			String accNumber = (String) model.getValueAt(selection, 0);
 			
-			IAccount found = accountsManager.getAccounts()
+			BankAccount found = accountsManager.getListAccounts()
 					.stream().filter(x -> x.getAccNumber().equals(accNumber))
 					.findFirst()
 					.orElse(null);
@@ -354,8 +358,8 @@ public class bank extends javax.swing.JFrame
 	private void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		  accountsManager.updateAccountsInterest();
-		  for (int i = 0; i < accountsManager.getAccounts().size(); i++) {
-			  	Double newBalance = accountsManager.getAccounts().get(i).getBalance();
+		  for (int i = 0; i < accountsManager.getListAccounts().size(); i++) {
+			  	Double newBalance = accountsManager.getListAccounts().get(i).getBalance();
 				model.setValueAt(newBalance, i, 5);
 		  }
 		  	

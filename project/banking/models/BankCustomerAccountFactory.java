@@ -1,17 +1,17 @@
 package banking.models;
 
 import java.util.HashMap;
+import framework.models.CustomerAccountFactory;
 
-public class PersonalCheckingsFactory extends BankCustomerAccountFactory {
+public class BankCustomerAccountFactory extends CustomerAccountFactory {
 
 	@Override
 	public BankCustomer createCustomer(HashMap<String, String> customerData) {
-		return new Person(customerData);
+		return new BankCustomer(customerData);
 	}
 
-	@Override
 	public BankAccount createAccount(HashMap<String, String> accountData, BankCustomer customer) {
-		return new CheckingsAccount(accountData, customer);
+		return new BankAccount(accountData, customer);
 	}
-
+	
 }
