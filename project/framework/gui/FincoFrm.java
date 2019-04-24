@@ -35,8 +35,7 @@ public class FincoFrm extends javax.swing.JFrame {
 	double amountDeposit;
 	InterestManager accountsManager = new InterestManager();
 	static List<ICustomer> customerList = new ArrayList<>();
-	static List<IAccount> accountList = new ArrayList<>();
-	HashMap<String, String> customerMap;
+ 	HashMap<String, String> customerMap;
 	HashMap<String, String> accountMap;
 	private JTable JTable1;
 	private JScrollPane JScrollPane1;
@@ -95,7 +94,7 @@ public class FincoFrm extends javax.swing.JFrame {
 		JButton_GenReport.setActionCommand("jbutton");
 		JPanel1.add(JButton_GenReport);
 		JButton_GenReport.setBounds(240, 20, 192, 33);
-		JButton_Transaction.setText("Transaction");
+		JButton_Transaction.setText("Deposit");
 		JPanel1.add(JButton_Transaction);
 		JButton_Transaction.setBounds(468, 104, 110, 33);
 		JButton_Exit.setText("Exit");
@@ -172,7 +171,7 @@ public class FincoFrm extends javax.swing.JFrame {
 		if (selection >= 0) {
 			String name = (String) model.getValueAt(selection, 0);
 			String accNumber = (String) model.getValueAt(selection, 1);
-			IAccount found = accountList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+			IAccount found = accountsManager.getAccounts().stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
 					.orElse(null);
 
 			// Show the dialog for adding deposit amount for the current mane
@@ -207,8 +206,9 @@ public class FincoFrm extends javax.swing.JFrame {
 		if (newaccount) {
 			ICustomer customer = factory.createCustomer(customerMap);
 			IAccount account = factory.createAccount(accountMap, customer);
+									
 			customerList.add(customer);
-			accountList.add(account);
+			accountsManager.getAccounts().add(account);
 			accountsManager.addAccount(account);
 
 			model.addRow(
@@ -227,14 +227,8 @@ public class FincoFrm extends javax.swing.JFrame {
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
 		accountsManager.updateAccountsInterest();
 
-		for (int i = 0; i < rowdata.length - 2; i++) {
-			final int currentIndex = i;
-			IAccount acc = accountList.stream()
-					.filter(x -> x.getAccNumber().equals((String) model.getValueAt(currentIndex, 1))).findFirst()
-					.orElse(null);
-
-			model.setValueAt(String.valueOf(acc.getBalance()), i, 2);
-		}
+		for (int i = 0; i < accountsManager.getAccounts().size() - 1; i++)
+			model.setValueAt(String.valueOf(accountsManager.getAccounts().get(i).getBalance()), i, 2);
 
 		JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts",
 				"Add interest to all accounts", JOptionPane.WARNING_MESSAGE);

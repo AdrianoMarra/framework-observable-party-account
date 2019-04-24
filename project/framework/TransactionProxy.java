@@ -11,17 +11,15 @@ public class TransactionProxy implements ITransaction {
 	}
 
 	@Override
-	public boolean executeTransaction() 
-	{		
+	public boolean executeTransaction() {
 		transaction.executeTransaction();
-		Post();		
-		System.out.println("Transaction Proxy Executed");		
+		Post();
+		System.out.println("Transaction Proxy Executed");
 		return true;
 	}
-	
-	public void Post() 
-	{
-		IEmailManager.sendEmail("");		
+
+	public void Post() {
+		IEmailManager.sendEmail("");
 	}
 
 	@Override
@@ -32,7 +30,6 @@ public class TransactionProxy implements ITransaction {
 	@Override
 	public void setAccount(IAccount account) {
 		transaction.setAccount(account);
-		
 	}
 
 	@Override
@@ -44,7 +41,7 @@ public class TransactionProxy implements ITransaction {
 	public double getAmount() {
 		return transaction.getAmount();
 	}
-	
+
 	@Override
 	public ITransaction getTransaction() {
 		return transaction;
