@@ -9,13 +9,15 @@ import java.util.Date;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
+import javax.swing.*;
+
 public class GenBillView extends javax.swing.JDialog {
 
-	String reportString = "";
+	private String reportString = "";
 	// {{DECLARE_CONTROLS
-	javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
-	javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private JScrollPane JScrollPane1 = new JScrollPane();
+	private JTextArea JTextField1 = new JTextArea();
+	private JButton JButton_OK = new JButton();
 
 	public GenBillView(Frame parent) {
 		super(parent);
