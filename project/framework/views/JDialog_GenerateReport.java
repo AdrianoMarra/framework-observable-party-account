@@ -1,5 +1,7 @@
 package framework.views;
 
+import java.util.Date;
+
 import javax.swing.JDialog;
 
 import framework.models.IAccount;
@@ -10,7 +12,7 @@ public class JDialog_GenerateReport extends JDialog {
 	javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
 	javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	String reportString;
+	String reportString = "";
 
 	public JDialog_GenerateReport(FincoFrm parent) {
 		super(parent);
@@ -28,7 +30,7 @@ public class JDialog_GenerateReport extends JDialog {
 		
 		
 		for (ICustomer customer : FincoFrm.customerList) {
-			reportString = "Name = " + customer.getName() + "\n";
+			reportString += "Name = " + customer.getName() + "\n";
 			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState() + "," + customer.getZip() + "\n";
 			
 			for (IAccount acc : customer.getAccountList()) 
@@ -36,7 +38,12 @@ public class JDialog_GenerateReport extends JDialog {
 				reportString += "Account Number = " + acc.getAccNumber() + "\n";
 				reportString += "Amount = $" + acc.getBalance();				
 			}
+			
+			reportString += "\n-----------------------------------\n";
 		}	
+
+	
+		
 
  
 		JTextField1.setText(reportString);
@@ -58,3 +65,4 @@ public class JDialog_GenerateReport extends JDialog {
 	}
 
 }
+

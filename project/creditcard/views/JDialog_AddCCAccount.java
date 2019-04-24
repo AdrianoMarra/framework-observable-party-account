@@ -125,12 +125,14 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
         JButton_OK.addActionListener(lSymAction);
         JButton_Cancel.addActionListener(lSymAction);
         JRadioButton_Bronze.addMouseListener(aSymMouse);
-        if(CardFrm.debug){
-            JTextField_Email.setText("email");
-            JTextField_CCNR.setText("123");
-            JTextField_NAME.setText("emmanuell");
-            JTextField_ZIP.setText("zip");
-        }
+        
+        
+//        if(CardFrm.debug){
+//            JTextField_Email.setText("email");
+//            JTextField_CCNR.setText("123");
+//            JTextField_NAME.setText("emmanuell");
+//            JTextField_ZIP.setText("zip");
+//        }
 
 
     }

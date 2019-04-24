@@ -19,7 +19,7 @@ public class TransactionProxy implements ITransaction {
 	}
 
 	public void Post() {
-		IEmailManager.sendEmail("");
+		IEmailManager.sendEmail("Executing\n Email sent.\n");
 	}
 
 	@Override

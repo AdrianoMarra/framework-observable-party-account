@@ -9,5 +9,6 @@ public class GoldAccount extends CreditCardAccount {
 	public GoldAccount(HashMap<String, String> map, ICustomer customer) {
 		super(map, customer);
 		setInterest(0.06);
+		setInterestMinimumPayment(0.10);
 	}
 }

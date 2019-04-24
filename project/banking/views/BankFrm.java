@@ -47,11 +47,12 @@ public class BankFrm extends javax.swing.JFrame
 		setTitle("Bank Application.");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0,0));
-		setSize(575,310);
+		setSize(600,330);
 		setVisible(false);
 		JPanel1.setLayout(null);
 		getContentPane().add(BorderLayout.CENTER, JPanel1);
-		JPanel1.setBounds(0,0,575,310);
+		JPanel1.setBounds(0,0,600,330);
+		
 		/*
 		/Add five buttons on the pane 
 		/for Adding personal account, Adding company account
@@ -88,13 +89,13 @@ public class BankFrm extends javax.swing.JFrame
 		JButton_Deposit.setBounds(468,104,96,33);
 		JButton_Withdraw.setText("Withdraw");
 		JPanel1.add(JButton_Withdraw);
-		JButton_Addinterest.setBounds(448,20,106,33);
+		JButton_Addinterest.setBounds(462,20,106,33);
 		JButton_Addinterest.setText("Add interest");
 		JPanel1.add(JButton_Addinterest);
 		JButton_Withdraw.setBounds(468,164,96,33);
 		JButton_Exit.setText("Exit");
 		JPanel1.add(JButton_Exit);
-		JButton_Exit.setBounds(468,248,96,31);
+		JButton_Exit.setBounds(468,225,96,31);
 		// lineBorder1.setRoundedCorners(true);
 		// lineBorder1.setLineColor(java.awt.Color.green);
 		//$$ lineBorder1.move(24,312);
@@ -222,7 +223,8 @@ public class BankFrm extends javax.swing.JFrame
 		*/
 		
 		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
-		pac.setBounds(450, 20, 300, 330);
+		pac.setBounds(450, 20, 300, 350);
+		pac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		pac.show();
 
 		if (newaccount){
@@ -266,7 +268,8 @@ public class BankFrm extends javax.swing.JFrame
 		 show it 
 		*/
 		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
-		pac.setBounds(450, 20, 300, 330);
+		pac.setBounds(450, 20, 300, 360);
+		pac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		pac.show();
 		
 		if (newaccount){
