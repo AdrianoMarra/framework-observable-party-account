@@ -3,8 +3,8 @@ package creditcard.models;
 import framework.models.IAccount;
 import framework.models.Transaction;
 
-public class Charge extends Transaction {
-	public Charge(IAccount account, double amount) {
+public class Charge extends CreditCardTransaction {
+	public Charge(CreditCardAccount account, double amount) {
 		super(account, amount);
 	}
 

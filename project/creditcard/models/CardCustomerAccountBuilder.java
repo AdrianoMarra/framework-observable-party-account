@@ -5,9 +5,9 @@ import framework.models.IFactory;
 
 public class CardCustomerAccountBuilder extends AccountBuilder {
 
-    public static IFactory getFactoryAccount(String string)
+    public static CreditCardFactory getFactoryAccount(String string)
     {
-        IFactory factory = null;
+    	CreditCardFactory factory = null;
 
         switch (string) {
             case "creditCardGold":

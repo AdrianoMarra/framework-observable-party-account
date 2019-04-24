@@ -6,15 +6,14 @@ import framework.models.CustomerAccountFactory;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
-public class BronzeFactory extends CustomerAccountFactory {
+public class BronzeFactory extends CreditCardFactory  {
 	@Override
-	public ICustomer createCustomer(HashMap<String, String> customerData) {
+	public Person createCustomer(HashMap<String, String> customerData) {
 		return new Person(customerData);
 	}
 
-	@Override
-	public IAccount createAccount(HashMap<String, String> accountData, ICustomer customer) {
-		return new BronzeAccount(accountData, customer);
+	public CreditCardAccount createAccount(HashMap<String, String> accountData, Person person) {
+		return new BronzeAccount(accountData, person);
 	}
 
 }

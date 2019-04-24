@@ -3,12 +3,11 @@ package banking.views;
 		A basic implementation of the JDialog class.
 **/
 
-import java.awt.*;
-import javax.swing.*;
+ 
 
 public class AddPersonalAccountView extends javax.swing.JDialog
 {
-    private bank parentframe;
+    private BankView parentframe;
     
 	private javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
 	private javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
@@ -31,7 +30,7 @@ public class AddPersonalAccountView extends javax.swing.JDialog
 	private javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
 	private javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
     
-	public AddPersonalAccountView(bank parent)
+	public AddPersonalAccountView(BankView parent)
 	{
 		super(parent);
 		parentframe=parent;

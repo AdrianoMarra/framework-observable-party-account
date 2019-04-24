@@ -7,13 +7,13 @@ import framework.models.ICustomer;
 import framework.models.Report;
 
 public class MonthlyBilingReport extends Report {
-    public MonthlyBilingReport(List<ICustomer> customers) {
-        super(customers);
-    }
+	public MonthlyBilingReport(List<ICustomer> customers) {
+		super(customers);
+	}
 
-    @Override
-    public String generateReport(Date date) {
+	@Override
+	public String generateReport(Date date) {
 
-        return super.generateReport(date);
-    }
+		return super.generateReport(date);
+	}
 }

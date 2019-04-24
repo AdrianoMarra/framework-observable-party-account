@@ -1,5 +1,10 @@
 package creditcard.views;
 
+import creditcard.models.Charge;
+import creditcard.models.ChargeProxy;
+import creditcard.models.CreditCardAccount;
+import creditcard.models.CreditCardTransaction;
+import creditcard.models.CreditCardTransactionManager;
 import creditcard.models.Deposit;
 import framework.models.*;
 
@@ -13,12 +18,12 @@ public class DepositView extends javax.swing.JDialog {
     private JButton JButton_OK = new JButton();
     private JButton JButton_Cancel = new JButton();
     private JTextField JTextField_Deposit = new JTextField();
-    private ccard parentframe;
+    private CardView parentframe;
     private String name;
-    private IAccount acc;
-    ITransactionManager transactionManager = new TransactionManager();
+    private CreditCardAccount acc;
+    CreditCardTransactionManager transactionManager = new CreditCardTransactionManager();
 
-    public DepositView(ccard parent, String aname, IAccount acc) {
+    public DepositView(CardView parent, String aname, CreditCardAccount acc) {
         super(parent);
         parentframe = parent;
         this.name = aname;
@@ -83,8 +88,12 @@ public class DepositView extends javax.swing.JDialog {
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        ITransaction transaction = new Deposit(acc, Double.parseDouble(JTextField_Deposit.getText()));
-        transaction = new TransactionProxy(transaction);
+//		CreditCardTransaction transaction = new Charge(acc, Double.parseDouble(JTextField_AMT.getText())); 	
+// 		transaction = new ChargeProxy(transaction, transaction.getAccount(), transaction.getAmount());
+// 		transactionManager.setTransaction(transaction);
+// 		transactionManager.execute();
+ 		
+        CreditCardTransaction transaction = new Deposit(acc, Double.parseDouble(JTextField_Deposit.getText())); 
         transactionManager.setTransaction(transaction);
         transactionManager.execute();
         dispose();
