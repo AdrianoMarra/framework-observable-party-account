@@ -203,7 +203,6 @@ public class BankFrm extends javax.swing.JFrame
 				JButtonWithdraw_actionPerformed(event);
 			else if (object == JButton_Addinterest)
 				JButtonAddinterest_actionPerformed(event);
-			
 		}
 	}
     
@@ -233,18 +232,16 @@ public class BankFrm extends javax.swing.JFrame
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			
 			ICustomer customer = customers.stream()
-					.filter(cust -> cust.getName().equals(customData.get("name")))
+					.filter(cust -> cust.getName().equals(customData.get("name")) 
+							&& cust.getClass().getSimpleName().equals("Person"))
 					.findFirst()
 					.orElse(null);
 			
 			if (customer == null) {
 				customer = currentFactoryAccount.createCustomer(customData);
 			}
-			
+						
 			IAccount acc = currentFactoryAccount.createAccount(customData, customer);
-			
-//			acc.setCustomer(customer);
-//			customer.addAccount(acc);	
 			customers.add(customer);
 			accountsManager.addAccount(acc);
 			
@@ -252,7 +249,7 @@ public class BankFrm extends javax.swing.JFrame
             rowdata[0] = acc.getAccNumber();
             rowdata[1] = customer.getName();
             rowdata[2] = customer.getCity();
-            rowdata[3] = "P";
+            rowdata[3] = customer.getClass().getSimpleName();
             rowdata[4] = accountType;
             rowdata[5] = acc.getBalance();
             model.addRow(rowdata);
@@ -268,7 +265,6 @@ public class BankFrm extends javax.swing.JFrame
 		 set the boundaries and 
 		 show it 
 		*/
-		
 		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
@@ -279,7 +275,8 @@ public class BankFrm extends javax.swing.JFrame
 			String factoryType = "company" + accountType;
 			currentFactoryAccount = BankCustomerAccountsBuilder.getFactoryAccount(factoryType);
 			ICustomer customer = customers.stream()
-					.filter(cust -> cust.getName().equals(customData.get("name")))
+					.filter(cust -> cust.getName().equals(customData.get("name"))
+							&& cust.getClass().getSimpleName().equals("Company"))
 					.findFirst()
 					.orElse(null);
 			
@@ -295,7 +292,7 @@ public class BankFrm extends javax.swing.JFrame
             rowdata[0] = acc.getAccNumber();
             rowdata[1] = customer.getName();
             rowdata[2] = customer.getCity();
-            rowdata[3] = "C";
+            rowdata[3] = customer.getClass().getSimpleName();
             rowdata[4] = accountType;
             rowdata[5] = acc.getBalance();
             model.addRow(rowdata);
@@ -358,16 +355,11 @@ public class BankFrm extends javax.swing.JFrame
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		  accountsManager.updateAccountsInterest();
-		  int count = 0;
-		  for (int i = 0; i < customers.size(); i++) {
-			  List<IAccount> customerAccounts = customers.get(i).getAccountList();
-			  for (int j = 0; j < customerAccounts.size(); j++) {
-				  	Double newBalance = customerAccounts.get(j).getBalance();
-					model.setValueAt(newBalance, count, 5);
-					count++;
-			  }
+		  for (int i = 0; i < accountsManager.getAccounts().size(); i++) {
+			  	Double newBalance = accountsManager.getAccounts().get(i).getBalance();
+				model.setValueAt(newBalance, i, 5);
 		  }
-	
+		  	
 		  JOptionPane.showMessageDialog(JButton_Addinterest, "Added interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
 	}
 }
