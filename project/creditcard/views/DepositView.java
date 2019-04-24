@@ -3,15 +3,13 @@ package creditcard.views;
 import creditcard.models.Deposit;
 import javax.swing.JOptionPane;
 
-import creditcard.models.Deposit; 
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
-import framework.models.Transaction;
 import framework.models.TransactionManager;
 import framework.models.TransactionProxy;
 
-public class JDialog_Deposit extends javax.swing.JDialog {
+public class DepositView extends javax.swing.JDialog {
 
 	// {{DECLARE_CONTROLS
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
@@ -20,12 +18,12 @@ public class JDialog_Deposit extends javax.swing.JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
-	private CardFrm parentframe;
+	private ccard parentframe;
 	private String name;
 	private IAccount acc;
 	ITransactionManager transactionManager = new TransactionManager();
 
-	public JDialog_Deposit(CardFrm parent, String aname, IAccount acc) {
+	public DepositView(ccard parent, String aname, IAccount acc) {
 		super(parent);
 		parentframe = parent;
 		this.name = aname;

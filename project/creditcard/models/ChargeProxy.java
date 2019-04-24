@@ -14,7 +14,7 @@ public class ChargeProxy extends TransactionProxy {
 
 	@Override
 	public boolean executeTransaction() {
-		transaction.executeTransaction();
+		super.getTransaction().executeTransaction();
 		if (getAmount() > 400) 
 			this.Post();
 		

@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import creditcard.models.CardCustomerAccountBuilder;
-import framework.models.Account;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 import framework.models.IFactory;
@@ -13,33 +12,23 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A basic JFC based application.
  **/
-public class CardFrm extends javax.swing.JFrame {
+public class ccard extends javax.swing.JFrame {
 
-	public HashMap<String, String> customData = new HashMap<>();
+	protected HashMap<String, String> customData = new HashMap<>();
 
-	String clientName;
-	String street;
-	String city;
-	String zip;
-	String state;
-	String accountType;
-	String amountDeposit;
-	String expdate;
-	String ccnumber;
-	String email;
-	String interest = "0.0";
-	boolean newaccount;
-	boolean updateview;
-	static boolean debug = true;
-	static List<IAccount> accountsList = new ArrayList<>();
-	static List<ICustomer> customersList = new ArrayList<>();
+	private String interest = "0.0";
+	protected boolean newaccount;
+	private static boolean debug = true;
+	private static List<IAccount> accountsList = new ArrayList<>();
+	protected static List<ICustomer> customersList = new ArrayList<>();
 
-	CardFrm thisframe;
+	private ccard thisframe;
+
+	protected String accountType;
 
 	private static IFactory currentFactory;
 
@@ -54,7 +43,7 @@ public class CardFrm extends javax.swing.JFrame {
 	private JScrollPane JScrollPane1;
 	private Object rowdata[];
 
-	public CardFrm() {
+	public ccard() {
 		thisframe = this;
 
 		setTitle("Credit-card processing Application.");
@@ -134,7 +123,7 @@ public class CardFrm extends javax.swing.JFrame {
 			}
 
 			// Create a new instance of our application's frame, and make it visible.
-			(new CardFrm()).setVisible(true);
+			(new ccard()).setVisible(true);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			// Ensure the application exits with an error condition.
@@ -176,7 +165,7 @@ public class CardFrm extends javax.swing.JFrame {
 		 * JDialog_AddPAcc type object set the boundaries and show it
 		 */
 
-		JDialog_AddCCAccount ccac = new JDialog_AddCCAccount(thisframe);
+		AddCCAccountView ccac = new AddCCAccountView(thisframe);
 		ccac.setBounds(450, 20, 300, 400);
 		ccac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		ccac.show();
@@ -215,7 +204,7 @@ public class CardFrm extends javax.swing.JFrame {
 	}
 
 	void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event) {
-		JDialogGenBill billFrm = new JDialogGenBill();		
+		GenBillView billFrm = new GenBillView();
 		billFrm.setBounds(450, 20, 810, 350);
 		billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		billFrm.show(); 	
@@ -230,7 +219,7 @@ public class CardFrm extends javax.swing.JFrame {
 			IAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
 					.orElse(null);
 			// Show the dialog for adding deposit amount for the current mane
-			JDialog_Deposit dep = new JDialog_Deposit(thisframe, name, found);
+			DepositView dep = new DepositView(thisframe, name, found);
 			dep.setBounds(430, 15, 275, 170);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			dep.show();
@@ -251,7 +240,7 @@ public class CardFrm extends javax.swing.JFrame {
 					.orElse(null);
 
 			// Show the dialog for adding withdraw amount for the current mane
-			JDialog_Charge wd = new JDialog_Charge(thisframe, name, found);
+			ChargeView wd = new ChargeView(thisframe, name, found);
 			wd.setBounds(430, 15, 275, 170);
 			wd.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			wd.show();
@@ -265,7 +254,7 @@ public class CardFrm extends javax.swing.JFrame {
 	class SymWindow extends java.awt.event.WindowAdapter {
 		public void windowClosing(java.awt.event.WindowEvent event) {
 			Object object = event.getSource();
-			if (object == CardFrm.this)
+			if (object == ccard.this)
 				BankFrm_windowClosing(event);
 		}
 	}

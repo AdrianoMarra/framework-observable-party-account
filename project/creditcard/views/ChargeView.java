@@ -1,28 +1,29 @@
 package creditcard.views;
 
 import creditcard.models.Charge;
-import creditcard.models.Deposit;
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
 import framework.models.TransactionManager;
 import framework.models.TransactionProxy;
 
-public class JDialog_Charge extends javax.swing.JDialog {
+import javax.swing.*;
 
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_AMT = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
-	private CardFrm parentframe;
+public class ChargeView extends javax.swing.JDialog {
+
+	private JLabel JLabel1 = new JLabel();
+	private JLabel JLabel2 = new JLabel();
+	private JTextField JTextField_NAME = new JTextField();
+	private JTextField JTextField_AMT = new JTextField();
+	private JButton JButton_OK = new JButton();
+	private JButton JButton_Calcel = new JButton();
+	private ccard parentframe;
 	private String name;
 	private IAccount acc;
 	ITransactionManager transactionManager = new TransactionManager();
 
 
-	public JDialog_Charge(CardFrm parent, String aname, IAccount acc) {
+	public ChargeView(ccard parent, String aname, IAccount acc) {
 		super(parent);
 		this.parentframe = parent;
 		this.name = aname;
