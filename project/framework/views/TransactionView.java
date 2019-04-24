@@ -10,7 +10,7 @@ import framework.models.TransactionManager;
 import framework.models.TransactionProxy;
 
  
-public class JDialog_Transaction extends JDialog {
+public class TransactionView extends JDialog {
 
 	private FincoFrm parentFrame;
 	private String name;
@@ -24,7 +24,7 @@ public class JDialog_Transaction extends JDialog {
 	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
 	ITransactionManager transactionManager = new TransactionManager();
 
-	public JDialog_Transaction(FincoFrm parent, String name, IAccount acc) 
+	public TransactionView(FincoFrm parent, String name, IAccount acc) 
 	{
 		super(parent);
 		this.parentFrame = parent;

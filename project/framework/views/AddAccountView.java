@@ -5,7 +5,7 @@ import java.util.Map;
 
 import framework.models.IFactory;
 
-public class JDialog_AddAccount extends javax.swing.JDialog {
+public class AddAccountView extends javax.swing.JDialog {
 
 	private FincoFrm parentFrame;
 
@@ -26,7 +26,7 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 
-	public JDialog_AddAccount(FincoFrm thisframe) {
+	public AddAccountView(FincoFrm thisframe) {
 		super(thisframe);
 		parentFrame = thisframe;
 
