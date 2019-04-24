@@ -1,28 +1,30 @@
 package creditcard.views;
 
+import javax.swing.*;
 
-public class JDialog_AddCompAcc extends javax.swing.JDialog {
+public class AddCompAccView extends javax.swing.JDialog {
     //{{DECLARE_CONTROLS
-    javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-    javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
-    javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-    javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_NoOfEmp = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
-    javax.swing.JButton JButton_OK = new javax.swing.JButton();
-    javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
-    private CardFrm parentframe;
-    public JDialog_AddCompAcc(CardFrm parent) {
+    private JRadioButton JRadioButton_Chk = new JRadioButton();
+    private JRadioButton JRadioButton_Sav = new JRadioButton();
+    private JLabel JLabel1 = new JLabel();
+    private JLabel JLabel2 = new JLabel();
+    private JLabel JLabel3 = new JLabel();
+    private JLabel JLabel4 = new JLabel();
+    private JLabel JLabel5 = new JLabel();
+    private JLabel JLabel6 = new JLabel();
+    private JLabel JLabel7 = new JLabel();
+    private JTextField JTextField_NAME = new JTextField();
+    private JTextField JTextField_CT = new JTextField();
+    private JTextField JTextField_ST = new JTextField();
+    private JTextField JTextField_STR = new JTextField();
+    private JTextField JTextField_ZIP = new JTextField();
+    private JTextField JTextField_NoOfEmp = new JTextField();
+    private JTextField JTextField_EM = new JTextField();
+    private JButton JButton_OK = new JButton();
+    private JButton JButton_Calcel = new JButton();
+    private ccard parentframe;
+
+    public AddCompAccView(ccard parent) {
         super(parent);
         parentframe = parent;
 
@@ -107,11 +109,11 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog {
     //}}
 
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-        parentframe.clientName = JTextField_NAME.getText();
-        parentframe.street = JTextField_STR.getText();
-        parentframe.city = JTextField_CT.getText();
-        parentframe.zip = JTextField_ZIP.getText();
-        parentframe.state = JTextField_ST.getText();
+        parentframe.customData.put("name", JTextField_NAME.getText());
+        parentframe.customData.put("street", JTextField_STR.getText());
+        parentframe.customData.put("city", JTextField_CT.getText());
+        parentframe.customData.put("zip", JTextField_ZIP.getText());
+        parentframe.customData.put("state", JTextField_ST.getText());
         if (JRadioButton_Chk.isSelected())
             parentframe.accountType = "Ch";
         else

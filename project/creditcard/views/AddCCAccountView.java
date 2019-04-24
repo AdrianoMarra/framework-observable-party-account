@@ -4,35 +4,32 @@ package creditcard.views;
 */
 
 import javax.swing.*;
-import java.util.HashMap;
 
-public class JDialog_AddCCAccount extends javax.swing.JDialog {
-    //{{DECLARE_CONTROLS
-    javax.swing.JRadioButton JRadioButton_Gold = new javax.swing.JRadioButton();
-    javax.swing.JRadioButton JRadioButton_Silver = new javax.swing.JRadioButton();
-    javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-    javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-    javax.swing.JLabel Label7 = new javax.swing.JLabel();
-    javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-    javax.swing.JTextField JTextField_CCNR = new javax.swing.JTextField();
+public class AddCCAccountView extends javax.swing.JDialog {
+    private JRadioButton JRadioButton_Gold = new JRadioButton();
+    private JRadioButton JRadioButton_Silver = new JRadioButton();
+    private JLabel JLabel1 = new JLabel();
+    private JLabel JLabel2 = new JLabel();
+    private JLabel JLabel3 = new JLabel();
+    private JLabel JLabel4 = new JLabel();
+    private JLabel JLabel5 = new JLabel();
+    private JLabel JLabel6 = new JLabel();
+    private JLabel Label7 = new JLabel();
+    private JTextField JTextField_NAME = new JTextField();
+    private JTextField JTextField_CT = new JTextField();
+    private JTextField JTextField_ST = new JTextField();
+    private JTextField JTextField_STR = new JTextField();
+    private JTextField JTextField_ZIP = new JTextField();
+    private JTextField JTextField_CCNR = new JTextField();
+    private JTextField JTextField_ExpDate = new JTextField();
+    private JButton JButton_OK = new JButton();
+    private JButton JButton_Cancel = new JButton();
+    private JRadioButton JRadioButton_Bronze = new JRadioButton();
+    private JLabel JLabel7 = new JLabel();
+    private JTextField JTextField_Email = new JTextField();
+    private ccard parentframe;
 
-    javax.swing.JTextField JTextField_ExpDate = new javax.swing.JTextField();
-    javax.swing.JButton JButton_OK = new javax.swing.JButton();
-    javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-    javax.swing.JRadioButton JRadioButton_Bronze = new javax.swing.JRadioButton();
-    javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-    javax.swing.JTextField JTextField_Email = new javax.swing.JTextField();
-    private CardFrm parentframe;
-
-    public JDialog_AddCCAccount(CardFrm thisframe) {
+    public AddCCAccountView(ccard thisframe) {
         super(thisframe);
         parentframe = thisframe;
 
@@ -125,18 +122,7 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
         JButton_OK.addActionListener(lSymAction);
         JButton_Cancel.addActionListener(lSymAction);
         JRadioButton_Bronze.addMouseListener(aSymMouse);
-        
-        
-//        if(CardFrm.debug){
-//            JTextField_Email.setText("email");
-//            JTextField_CCNR.setText("123");
-//            JTextField_NAME.setText("emmanuell");
-//            JTextField_ZIP.setText("zip");
-//        }
-
-
     }
-    //}}
 
     void JRadioButtonChk_mouseClicked(java.awt.event.MouseEvent event) {
         JRadioButton_Gold.setSelected(true);
@@ -159,15 +145,14 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
     }
 
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-        parentframe.clientName = JTextField_NAME.getText();
-        parentframe.street = JTextField_STR.getText();
-        parentframe.city = JTextField_CT.getText();
-        parentframe.zip = JTextField_ZIP.getText();
-        parentframe.state = JTextField_ST.getText();
-        parentframe.ccnumber = JTextField_CCNR.getText();
-        parentframe.email = JTextField_Email.getText();
-        parentframe.expdate = JTextField_ExpDate.getText();
-
+//        parentframe.clientName = ;
+//        parentframe.street = ;
+//        parentframe.city = JTextField_CT.getText();
+//        parentframe.zip = JTextField_ZIP.getText();
+//        parentframe.state = JTextField_ST.getText();
+//        parentframe.ccnumber = JTextField_CCNR.getText();
+//        parentframe.email = JTextField_Email.getText();
+//        parentframe.expdate = JTextField_ExpDate.getText();
         if (JRadioButton_Gold.isSelected())
             parentframe.accountType = "creditCardGold";
         else {
@@ -176,16 +161,13 @@ public class JDialog_AddCCAccount extends javax.swing.JDialog {
             else
                 parentframe.accountType = "creditCardBronze";
         }
-
-        parentframe.customData.put("name", parentframe.clientName);
-        parentframe.customData.put("accNumber", parentframe.ccnumber);
-        parentframe.customData.put("street", parentframe.street);
-        parentframe.customData.put("city", parentframe.city);
-        parentframe.customData.put("state", parentframe.state);
-        parentframe.customData.put("zip", parentframe.zip);
-        parentframe.customData.put("email", parentframe.email);
-
-
+        parentframe.customData.put("name", JTextField_NAME.getText());
+        parentframe.customData.put("accNumber", JTextField_CCNR.getText());
+        parentframe.customData.put("street", JTextField_STR.getText());
+        parentframe.customData.put("city", JTextField_CT.getText());
+        parentframe.customData.put("state", JTextField_ST.getText());
+        parentframe.customData.put("zip", JTextField_ZIP.getText());
+        parentframe.customData.put("email", JTextField_Email.getText());
         parentframe.newaccount = true;
         dispose();
     }
