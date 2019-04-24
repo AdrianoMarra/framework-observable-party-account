@@ -2,10 +2,11 @@ package creditcard.models;
 
 import java.util.HashMap;
 
+import framework.models.CustomerAccountFactory;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
-public class SilverFactory implements framework.models.IFactory {
+public class SilverFactory extends CustomerAccountFactory {
     @Override
     public ICustomer createCustomer(HashMap<String, String> customerData) {
         return new Person(customerData);

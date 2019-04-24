@@ -5,7 +5,7 @@ import java.util.HashMap;
 import framework.models.IAccount;
 import framework.models.ICustomer;
 
-public class GoldFactory implements framework.models.IFactory {
+public class GoldFactory extends framework.models.CustomerAccountFactory {
 
 	@Override
 	public ICustomer createCustomer(HashMap<String, String> customerData) {
