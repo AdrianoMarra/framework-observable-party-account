@@ -15,7 +15,7 @@ public class CreditCardFactory extends CustomerAccountFactory {
     }
 
     @Override
-    public IAccount createAccount(HashMap<String, String> accountData) {
-        return new SilverAccount(accountData);
+    public IAccount createAccount(HashMap<String, String> accountData, ICustomer customer) {
+        return new SilverAccount(accountData, customer);
     }
 }
