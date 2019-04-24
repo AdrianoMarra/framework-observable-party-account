@@ -1,11 +1,8 @@
 package banking.models;
 
-import framework.models.IAccount;
-import framework.models.Transaction;
+public class AccountDepositTransaction extends BankTransaction {
 
-public class AccountDepositTransaction extends Transaction {
-
-	public AccountDepositTransaction(IAccount account, double amount) {
+	public AccountDepositTransaction(BankAccount account, double amount) {
 		super(account, amount);
 	}
 	

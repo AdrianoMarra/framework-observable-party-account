@@ -1,14 +1,14 @@
 package banking.models;
 
-import framework.models.IAccount;
 import framework.models.IEmailManager;
-import framework.models.ITransaction;
-import framework.models.TransactionProxy;
 
-public class AccountDepositProxy extends TransactionProxy {
+public class AccountDepositProxy extends BankTransaction {
 
-	public AccountDepositProxy(ITransaction transaction) {
-		super(transaction);
+	private BankTransaction bt;
+	
+	public AccountDepositProxy(BankTransaction transaction) {
+		super(transaction.getAccount(), transaction.getAmount());
+		bt = transaction;
 	}
 
 	@Override
@@ -16,10 +16,10 @@ public class AccountDepositProxy extends TransactionProxy {
 		
 		boolean resp = false;
 		
-		if (super.getTransaction().executeTransaction()) {
-			double amount = super.getTransaction().getAmount();
+		if (bt.executeTransaction()) {
+			double amount = bt.getAmount();
 			
-			IAccount acc = super.getTransaction().getAccount();
+			BankAccount acc = bt.getAccount();
 			if (acc.getCustomer() instanceof Person) {
 				SendPersonalDepositEmail(amount, acc);
 			} else {
@@ -30,12 +30,12 @@ public class AccountDepositProxy extends TransactionProxy {
 		return resp;
 	}
 	
-	public void SendCompanyDepositEmail(double amount, IAccount account) 
+	public void SendCompanyDepositEmail(double amount, BankAccount account) 
 	{
 		IEmailManager.sendEmail("Company email: "+ account.getCustomer().getEmail()+"\n Account Number: " + account.getAccNumber() + "\n transaction amount: " + " +"+amount);		
 	}
 	
-	public void SendPersonalDepositEmail(double amount, IAccount account) 
+	public void SendPersonalDepositEmail(double amount, BankAccount account) 
 	{
 		if (amount > 500) {
 			IEmailManager.sendEmail("Person email: "+ account.getCustomer().getEmail()+ "Account Number: " + account.getAccNumber() + "\ntransaction amount: " + " +"+amount);		

@@ -6,6 +6,9 @@ import banking.models.AccountDepositProxy;
 import banking.models.AccountDepositTransaction;
 import banking.models.AccountWithdrawProxy;
 import banking.models.AccountWithdrawTransaction;
+import banking.models.BankAccount;
+import banking.models.BankTransaction;
+import banking.models.BankTransactionManager;
 import framework.models.IAccount;
 import framework.models.ITransaction;
 import framework.models.ITransactionManager;
@@ -15,8 +18,8 @@ public class WithdrawView extends javax.swing.JDialog
 {
     private bank parentframe;
     private String accnr;
-	private ITransactionManager transactionManager = new TransactionManager();
-	private IAccount acc;
+	private BankTransactionManager transactionManager = new BankTransactionManager();
+	private BankAccount acc;
 	
 	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
@@ -25,7 +28,7 @@ public class WithdrawView extends javax.swing.JDialog
 	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	private javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
 
-	public WithdrawView(bank parent, String aaccnr, IAccount acc)
+	public WithdrawView(bank parent, String aaccnr, BankAccount acc)
 	{
 		super(parent);
 		parentframe=parent;
@@ -87,7 +90,7 @@ public class WithdrawView extends javax.swing.JDialog
 
 	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{		
- 		ITransaction transaction = new AccountWithdrawTransaction(acc, Double.parseDouble(JTextField_AMT.getText())); 	
+ 		BankTransaction transaction = new AccountWithdrawTransaction(acc, Double.parseDouble(JTextField_AMT.getText())); 	
  		transaction = new AccountWithdrawProxy(transaction);  		
  		transactionManager.setTransaction(transaction);
  		transactionManager.execute();	
