@@ -11,17 +11,21 @@ import framework.models.ITransaction;
 import framework.models.ITransactionManager;
 import framework.models.TransactionManager;
 
-
-
-public class JDialog_Withdraw extends javax.swing.JDialog
+public class WithdrawView extends javax.swing.JDialog
 {
-   
-    private BankFrm parentframe;
+    private bank parentframe;
     private String accnr;
-	ITransactionManager transactionManager = new TransactionManager();
+	private ITransactionManager transactionManager = new TransactionManager();
 	private IAccount acc;
+	
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_AMT = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
 
-	public JDialog_Withdraw(BankFrm parent, String aaccnr, IAccount acc)
+	public WithdrawView(bank parent, String aaccnr, IAccount acc)
 	{
 		super(parent);
 		parentframe=parent;
@@ -66,21 +70,8 @@ public class JDialog_Withdraw extends javax.swing.JDialog
 		
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
-		JButton_Calcel.addActionListener(lSymAction);
-		
+		JButton_Calcel.addActionListener(lSymAction);	
 	}
-
-
-
-	
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_AMT = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
-
-
 
 	class SymAction implements java.awt.event.ActionListener
 	{
@@ -94,7 +85,7 @@ public class JDialog_Withdraw extends javax.swing.JDialog
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{		
  		ITransaction transaction = new AccountWithdrawTransaction(acc, Double.parseDouble(JTextField_AMT.getText())); 	
  		transaction = new AccountWithdrawProxy(transaction);  		
@@ -104,7 +95,7 @@ public class JDialog_Withdraw extends javax.swing.JDialog
 		dispose();
 	}
 
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		dispose();
 	}

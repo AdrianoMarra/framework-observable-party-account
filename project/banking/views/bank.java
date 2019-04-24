@@ -20,27 +20,35 @@ import javax.swing.*;
  * A basic JFC based application. 
  * 
  * */
-public class BankFrm extends javax.swing.JFrame
+public class bank extends javax.swing.JFrame
 {
     /****
      * init variables in the object
      ****/
-	public String accountType;
-	public String clientType;
-	public String amountDeposit;
-    boolean newaccount;
+	protected String accountType;
+	private String clientType;
+	private String amountDeposit;
+	protected boolean newaccount;
     private DefaultTableModel model;
     private JTable JTable1;
     private JScrollPane JScrollPane1;
-    BankFrm myframe;
+    private bank myframe;
     private Object rowdata[];
     
 	private static IFactory currentFactoryAccount;
 	protected HashMap<String, String> customData = new HashMap<>();
-	List<ICustomer> customers = new ArrayList<>();
-	InterestManager accountsManager = new InterestManager();
+	private List<ICustomer> customers = new ArrayList<>();
+	private InterestManager accountsManager = new InterestManager();
 	
-	public BankFrm()
+	private javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
+	private javax.swing.JButton JButton_PerAC = new javax.swing.JButton();
+	private javax.swing.JButton JButton_CompAC = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Deposit = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Withdraw = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Addinterest= new javax.swing.JButton();
+	private javax.swing.JButton JButton_Exit = new javax.swing.JButton();
+	
+	public bank()
 	{	
 		myframe = this;
 
@@ -75,7 +83,7 @@ public class BankFrm extends javax.swing.JFrame
         JScrollPane1.setBounds(12,92,444,160);
         JScrollPane1.getViewport().add(JTable1);
         JTable1.setBounds(0, 0, 420, 0);
-//        rowdata = new Object[8];
+//      	rowdata = new Object[8];
 		
 		JButton_PerAC.setText("Add personal account");
 		JPanel1.add(JButton_PerAC);
@@ -116,7 +124,6 @@ public class BankFrm extends javax.swing.JFrame
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 	}
 
-	
 	/*****************************************************
 	 * The entry point for this application.
 	 * Sets the Look and Feel to the System Look and Feel.
@@ -135,7 +142,7 @@ public class BankFrm extends javax.swing.JFrame
 		    }
 		    
 			//Create a new instance of our application's frame, and make it visible.
-			(new BankFrm()).setVisible(true);
+			(new bank()).setVisible(true);
 		} 
 		catch (Throwable t) {
 			t.printStackTrace();
@@ -144,16 +151,7 @@ public class BankFrm extends javax.swing.JFrame
 		}
 	}
 
-
-	javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
-	javax.swing.JButton JButton_PerAC = new javax.swing.JButton();
-	javax.swing.JButton JButton_CompAC = new javax.swing.JButton();
-	javax.swing.JButton JButton_Deposit = new javax.swing.JButton();
-	javax.swing.JButton JButton_Withdraw = new javax.swing.JButton();
-	javax.swing.JButton JButton_Addinterest= new javax.swing.JButton();
-	javax.swing.JButton JButton_Exit = new javax.swing.JButton();
-
-	void exitApplication()
+	private void exitApplication()
 	{
 		try {
 		    	this.setVisible(false);    // hide the Frame
@@ -168,19 +166,17 @@ public class BankFrm extends javax.swing.JFrame
 		public void windowClosing(java.awt.event.WindowEvent event)
 		{
 			Object object = event.getSource();
-			if (object == BankFrm.this)
+			if (object == bank.this)
 				BankFrm_windowClosing(event);
 		}
 	}
 
-	void BankFrm_windowClosing(java.awt.event.WindowEvent event)
-	{
-		// to do: code goes here.
-			 
+	private void BankFrm_windowClosing(java.awt.event.WindowEvent event)
+	{			 
 		BankFrm_windowClosing_Interaction1(event);
 	}
 
-	void BankFrm_windowClosing_Interaction1(java.awt.event.WindowEvent event) {
+	private void BankFrm_windowClosing_Interaction1(java.awt.event.WindowEvent event) {
 		try {
 			this.exitApplication();
 		} catch (Exception e) {
@@ -209,12 +205,12 @@ public class BankFrm extends javax.swing.JFrame
     
     //When the Exit button is pressed this code gets executed
     //this will exit from the system
-    void JButtonExit_actionPerformed(java.awt.event.ActionEvent event)
+    private void JButtonExit_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		System.exit(0);
 	}
 
-	void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		/*
 		 JDialog_AddPAcc type object is for adding personal information
@@ -222,12 +218,12 @@ public class BankFrm extends javax.swing.JFrame
 		 set the boundaries and show it 
 		*/
 		
-		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
+		AddCompanyAccountView pac = new AddCompanyAccountView(myframe);
 		pac.setBounds(450, 20, 300, 350);
 		pac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		pac.show();
 
-		if (newaccount){
+		if (newaccount) {
 			
 			//create new account
 			String factoryType = "personal" + accountType;
@@ -260,14 +256,14 @@ public class BankFrm extends javax.swing.JFrame
         } 
     }
 
-	void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		/*
 		 construct a JDialog_AddCompAcc type object 
 		 set the boundaries and 
 		 show it 
 		*/
-		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
+		AddCompanyAccountView pac = new AddCompanyAccountView(myframe);
 		pac.setBounds(450, 20, 300, 360);
 		pac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		pac.show();
@@ -305,7 +301,7 @@ public class BankFrm extends javax.swing.JFrame
 
 	}
 	
-	void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event)
 	{
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
@@ -319,7 +315,7 @@ public class BankFrm extends javax.swing.JFrame
 					.orElse(null);
 		
 			// Show the dialog for adding deposit amount for the current mane
-			JDialog_Deposit dep = new JDialog_Deposit(myframe, accNumber, found);
+			DepositView dep = new DepositView(myframe, accNumber, found);
 			dep.setBounds(430, 15, 275, 160);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			dep.show();
@@ -330,7 +326,7 @@ public class BankFrm extends javax.swing.JFrame
 		}
 	}
 
-	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
 	{		
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
@@ -344,7 +340,7 @@ public class BankFrm extends javax.swing.JFrame
 					.orElse(null);
 		
 			// Show the dialog for adding deposit amount for the current mane
-			JDialog_Withdraw dep = new JDialog_Withdraw(myframe, accNumber, found);
+			WithdrawView dep = new WithdrawView(myframe, accNumber, found);
 			dep.setBounds(430, 15, 275, 160);
 			dep.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 			dep.show();
@@ -355,7 +351,7 @@ public class BankFrm extends javax.swing.JFrame
 		}
 	}
 	
-	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		  accountsManager.updateAccountsInterest();
 		  for (int i = 0; i < accountsManager.getAccounts().size(); i++) {

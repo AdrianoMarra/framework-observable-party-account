@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-import banking.views.BankFrm;
+import banking.views.bank;
 import framework.models.Account;
 import framework.models.AccountBuilder;
 import framework.models.Customer;

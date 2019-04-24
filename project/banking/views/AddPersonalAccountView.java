@@ -6,11 +6,32 @@ package banking.views;
 import java.awt.*;
 import javax.swing.*;
 
-public class JDialog_AddPAcc extends javax.swing.JDialog
+public class AddPersonalAccountView extends javax.swing.JDialog
 {
-    private BankFrm parentframe;
+    private bank parentframe;
     
-	public JDialog_AddPAcc(BankFrm parent)
+	private javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
+	private javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_BD = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
+	private javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
+	private javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
+    
+	public AddPersonalAccountView(bank parent)
 	{
 		super(parent);
 		parentframe=parent;
@@ -102,33 +123,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		//}}
 	}
 
-
-
-
-	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_BD = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-	javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
-	javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
-	//}}
-
-
 	class SymMouse extends java.awt.event.MouseAdapter
 	{
 		public void mouseClicked(java.awt.event.MouseEvent event)
@@ -141,7 +135,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		}
 	}
 
-	void JRadioButtonChk_mouseClicked(java.awt.event.MouseEvent event)
+	private void JRadioButtonChk_mouseClicked(java.awt.event.MouseEvent event)
 	{
 		//When Checking radio is clicked make this radio on 
 		//and make Saving account radio off
@@ -149,7 +143,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JRadioButton_Sav.setSelected(false);
 	}
 
-	void JRadioButtonSav_mouseClicked(java.awt.event.MouseEvent event)
+	private void JRadioButtonSav_mouseClicked(java.awt.event.MouseEvent event)
 	{
 		//When Saving radio is clicked make this radio on 
 		//and make Checking account radio off
@@ -170,7 +164,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{       
        parentframe.customData.put("accNumber", JTextField_ACNR.getText());
        parentframe.customData.put("name", JTextField_NAME.getText());
@@ -189,9 +183,9 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
        dispose();
 	}
 
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
 	{
-    //make this frame invisible if Cancel button is clicked
+		//make this frame invisible if Cancel button is clicked
         dispose();
 	}
 }

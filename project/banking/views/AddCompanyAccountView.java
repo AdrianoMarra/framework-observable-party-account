@@ -4,11 +4,32 @@ import javax.swing.*;
 
 
 
-public class JDialog_AddCompAcc extends javax.swing.JDialog
+public class AddCompanyAccountView extends javax.swing.JDialog
 {
-    private BankFrm parentframe;
+    private bank parentframe;
     
-	public JDialog_AddCompAcc(BankFrm parent)
+	private javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
+	private javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_NoOfEmp = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
+	private javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
+    
+	public AddCompanyAccountView(bank parent)
 	{
 		super(parent);
 		parentframe=parent;
@@ -96,32 +117,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		JButton_Calcel.addActionListener(lSymAction);
 		//}}
 	}
-
-
-	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_NoOfEmp = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
-	javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
-	//}}
-
-
+	
 	class SymAction implements java.awt.event.ActionListener
 	{
 		public void actionPerformed(java.awt.event.ActionEvent event)
@@ -134,7 +130,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
 	{
 	       parentframe.customData.put("accNumber", JTextField_ACNR.getText());
 	       parentframe.customData.put("name", JTextField_NAME.getText());
@@ -154,7 +150,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 			 
 	}
 
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		dispose();
 			 
