@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="framework.InterestManager" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/InterestManager.java" binary="false" 
+  <class id="1" language="java" name="framework.models.InterestManager" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/InterestManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1212" y="586"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -11,8 +11,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="framework.TransactionProxy" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/TransactionProxy.java" binary="false" 
+  <class id="2" language="java" name="framework.models.TransactionProxy" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/TransactionProxy.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1144" y="1145"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -21,8 +21,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="framework.Customer" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="framework.models.Customer" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/Customer.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="680" y="588"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -30,8 +31,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="4" language="java" name="framework.ICustomer" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/ICustomer.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="4" language="java" name="framework.models.ICustomer" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/ICustomer.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="662" y="85"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -39,8 +41,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="5" language="java" name="framework.Default" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/Default.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="framework.models.Default" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/Default.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="946" y="102"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -48,8 +51,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="6" language="java" name="framework.IFactory" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/IFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="6" language="java" name="framework.models.IFactory" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/IFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="390" y="353"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -57,8 +61,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="7" language="java" name="framework.IInterestManager" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/IInterestManager.java" binary="false" 
+  <interface id="7" language="java" name="framework.models.IInterestManager" 
+    project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/IInterestManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1213" y="328"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -67,8 +72,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="8" language="java" name="framework.TransactionManager" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/TransactionManager.java" binary="false" 
+  <class id="8" language="java" name="framework.models.TransactionManager" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/TransactionManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="466" y="1136"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -77,8 +82,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="9" language="java" name="framework.IReport" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/IReport.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="9" language="java" name="framework.models.IReport" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/IReport.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="954" y="326"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -86,8 +92,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="10" language="java" name="framework.AccountBuilder" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/AccountBuilder.java" binary="false" 
+  <class id="10" language="java" name="framework.models.AccountBuilder" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/AccountBuilder.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="30" y="348"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -96,8 +102,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="11" language="java" name="framework.IAccount" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/IAccount.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="11" language="java" name="framework.models.IAccount" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/IAccount.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1451" y="244"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -105,8 +112,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="12" language="java" name="framework.Account" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/Account.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="framework.models.Account" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/Account.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1449" y="611"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -114,8 +122,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="13" language="java" name="framework.ITransaction" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/ITransaction.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="13" language="java" name="framework.models.ITransaction" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/ITransaction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="885" y="905"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -123,8 +132,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="14" language="java" name="framework.ITransactionManager" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/ITransactionManager.java" binary="false" 
+  <interface id="14" language="java" name="framework.models.ITransactionManager" 
+    project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/ITransactionManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="460" y="904"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -133,8 +143,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="15" language="java" name="framework.Report" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/Report.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="framework.models.Report" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/Report.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="952" y="588"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -142,8 +152,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="16" language="java" name="framework.IEmailManager" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/IEmailManager.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="16" language="java" name="framework.models.IEmailManager" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/IEmailManager.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1142" y="915"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -151,8 +162,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="17" language="java" name="framework.Transaction" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/Transaction.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="17" language="java" name="framework.models.Transaction" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/Transaction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="881" y="1130"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -160,8 +172,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="framework.CustomerAccountFactory" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/CustomerAccountFactory.java" binary="false" 
+  <class id="18" language="java" name="framework.models.CustomerAccountFactory" 
+    project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/models/CustomerAccountFactory.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="395" y="577"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -171,160 +184,160 @@
     </display>  
   </class>  
   <realization id="19">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="14"/>  
   </realization>  
-  <association id="20">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="21" name="transaction">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
+  <realization id="20">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <association id="21">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="24" name="customers">        
+      <attribute id="22" name="customers">        
         <position height="0" width="0" x="-38" y="-230"/>      
       </attribute>      
-      <multiplicity id="25" minimum="0" maximum="2147483647">        
+      <multiplicity id="23" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-38" y="-230"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="accounts">        
-        <position height="0" width="0" x="-3" y="-72"/>      
-      </attribute>      
-      <multiplicity id="28" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-3" y="-72"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="29">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="30">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="31" name="accs">        
-        <position height="0" width="0" x="-3" y="-72"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-3" y="-72"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
+  <realization id="24">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="25">    
     <bendpoint x="908" y="470"/>    
     <bendpoint x="1280" y="436"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="34" name="accountList">        
+      <attribute id="26" name="accountList">        
         <position height="0" width="0" x="-3" y="-72"/>      
       </attribute>      
-      <multiplicity id="35" minimum="0" maximum="2147483647">        
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-3" y="-72"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="36">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <realization id="37">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <dependency id="38">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <realization id="39">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <dependency id="40">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
-  <association id="41">    
+  <association id="28">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="29" name="accs">        
+        <position height="0" width="0" x="-3" y="-72"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-3" y="-72"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="32" name="transactions">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
     <bendpoint x="-79" y="110"/>    
     <bendpoint x="-84" y="772"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="42" name="transactionManager">        
+      <attribute id="35" name="transactionManager">        
         <position height="0" width="0" x="-133" y="122"/>      
       </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
+      <multiplicity id="36" minimum="0" maximum="1">        
         <position height="0" width="0" x="-133" y="122"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="45" name="currentTransaction">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="47">    
+  <realization id="37">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="13"/>  
   </realization>  
-  <association id="48">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="49" name="transactions">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </attribute>      
-      <multiplicity id="50" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-2" y="120"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="51">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="14"/>  
+  <realization id="38">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="52">    
+  <dependency id="39">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="40">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="53" name="transactionHistory">        
+      <attribute id="41" name="currentTransaction">        
         <position height="0" width="0" x="-2" y="120"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="2147483647">        
+      <multiplicity id="42" minimum="0" maximum="1">        
         <position height="0" width="0" x="-2" y="120"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="55">    
+  <association id="43">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="44" name="accounts">        
+        <position height="0" width="0" x="-3" y="-72"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-3" y="-72"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="47" name="transaction">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="50">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="51" name="transactionHistory">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </attribute>      
+      <multiplicity id="52" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2" y="120"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="53">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="11"/>  
   </realization>  
+  <realization id="54">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
   <realization id="56">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="6"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
