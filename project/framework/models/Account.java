@@ -20,6 +20,7 @@ public class Account implements IAccount {
  		this.customer.addAccount(this);
 	}
 
+	
 	@Override
 	public List<ITransaction> getTransactions() {
 		return transactions;
