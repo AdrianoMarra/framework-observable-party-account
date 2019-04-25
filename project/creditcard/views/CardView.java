@@ -144,7 +144,7 @@ public class CardView extends javax.swing.JFrame {
         System.exit(0);
     }
 
-    void JButtonNewCCAC_actionPerformed(java.awt.event.ActionEvent event) {
+    void addAccount(java.awt.event.ActionEvent event) {
         /*
          * JDialog_AddPAcc type object is for adding personal information construct a
          * JDialog_AddPAcc type object set the boundaries and show it
@@ -183,14 +183,14 @@ public class CardView extends javax.swing.JFrame {
         }
     }
 
-    void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event) {
+    void generateMonthlyBills(java.awt.event.ActionEvent event) {
         GenBillView billFrm = new GenBillView();
         billFrm.setBounds(450, 20, 810, 350);
         billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
         billFrm.show();
     }
 
-    void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event) {
+    void deposit(java.awt.event.ActionEvent event) {
         // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
         if (selection >= 0) {
@@ -209,7 +209,7 @@ public class CardView extends javax.swing.JFrame {
         }
     }
 
-    void JButtonCharge_actionPerformed(java.awt.event.ActionEvent event) {
+    void charge(java.awt.event.ActionEvent event) {
         // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
         if (selection >= 0) {
@@ -242,13 +242,13 @@ public class CardView extends javax.swing.JFrame {
             if (object == JButton_Exit)
                 JButtonExit_actionPerformed(event);
             else if (object == JButton_NewCCAccount)
-                JButtonNewCCAC_actionPerformed(event);
+            	addAccount(event);
             else if (object == JButton_GenBill)
-                JButtonGenerateBill_actionPerformed(event);
+            	generateMonthlyBills(event);
             else if (object == JButton_Deposit)
-                JButtonDeposit_actionPerformed(event);
+                deposit(event);
             else if (object == JButton_Charge)
-                JButtonCharge_actionPerformed(event);
+                charge(event);
         }
     }
 }
