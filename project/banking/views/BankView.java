@@ -200,7 +200,7 @@ public class BankView extends javax.swing.JFrame {
 		 * JDialog_AddPAcc type object set the boundaries and show it
 		 */
 
-		AddCompanyAccountView pac = new AddCompanyAccountView(myframe);
+		AddPersonalAccountView pac = new AddPersonalAccountView(myframe);
 		pac.setBounds(450, 20, 300, 350);
 		pac.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) event.getSource()));
 		pac.show();

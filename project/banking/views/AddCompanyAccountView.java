@@ -129,6 +129,7 @@ public class AddCompanyAccountView extends javax.swing.JDialog {
 		parentframe.customData.put("city", JTextField_CT.getText());
 		parentframe.customData.put("zip", JTextField_ZIP.getText());
 		parentframe.customData.put("state", JTextField_ST.getText());
+		parentframe.customData.put("numOfEmployees", JTextField_NoOfEmp.getText());
 
 		if (JRadioButton_Chk.isSelected()) {
 			parentframe.accountType = "Checkings";
