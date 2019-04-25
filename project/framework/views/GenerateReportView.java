@@ -10,10 +10,10 @@ import framework.models.ICustomer;
 
 public class GenerateReportView extends JDialog {
 
-	javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
-	javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	String reportString = "";
+	private javax.swing.JScrollPane JScrollPane1 = new javax.swing.JScrollPane();
+	private javax.swing.JTextArea JTextField1 = new javax.swing.JTextArea();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private String reportString = "";
 
 	public GenerateReportView(FincoView parent) {
 		super(parent);
@@ -56,7 +56,7 @@ public class GenerateReportView extends JDialog {
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
 		dispose();
 	}
 

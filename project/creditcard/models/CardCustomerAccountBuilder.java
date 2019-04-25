@@ -1,7 +1,7 @@
 package creditcard.models;
 
 import framework.models.AccountBuilder;
-import framework.models.IFactory;
+import framework.models.ICustomerAccountFactory;
 
 public class CardCustomerAccountBuilder extends AccountBuilder {
 

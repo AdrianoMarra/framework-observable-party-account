@@ -3,28 +3,28 @@ package framework.views;
 import java.util.HashMap;
 import java.util.Map;
 
-import framework.models.IFactory;
+import framework.models.ICustomerAccountFactory;
 
 public class AddAccountView extends javax.swing.JDialog {
 
 	private FincoView parentFrame;
 
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ACCNR = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_Email = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_ACCNR = new javax.swing.JTextField();
+	private javax.swing.JTextField JTextField_Email = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 
 	public AddAccountView(FincoView thisframe) {
 		super(thisframe);
@@ -86,10 +86,6 @@ public class AddAccountView extends javax.swing.JDialog {
 		JButton_Cancel.setActionCommand("Cancel");
 		getContentPane().add(JButton_Cancel);
 		JButton_Cancel.setBounds(156, 210, 84, 24);
-
-		// }}
-
-		// {{REGISTER_LISTENERS
 
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);

@@ -18,21 +18,21 @@ import framework.finco;
 import framework.models.AccountBuilder;
 import framework.models.IAccount;
 import framework.models.ICustomer;
-import framework.models.IFactory;
+import framework.models.ICustomerAccountFactory;
 
 public class FincoView extends javax.swing.JFrame {
 
-	boolean newaccount;
-	double amountDeposit;
+	protected boolean newaccount;
+	protected double amountDeposit;
 
-	HashMap<String, String> customerMap;
-	HashMap<String, String> accountMap;
+	protected HashMap<String, String> customerMap;
+	protected HashMap<String, String> accountMap;
 	private JTable JTable1;
 	private JScrollPane JScrollPane1;
 	private DefaultTableModel model;
-	FincoView thisframe;
+	private FincoView thisframe;
 	private Object rowdata[];
-	private IFactory factory;
+	private ICustomerAccountFactory customerAccountFactory;
 
 	private javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
 	private javax.swing.JButton JButton_NewAccount = new javax.swing.JButton();
@@ -105,11 +105,11 @@ public class FincoView extends javax.swing.JFrame {
 		JButton_Addinterest.addActionListener(ISymAction);
 
 		// getting factory
-		factory = AccountBuilder.getFactoryAccount("");
+		customerAccountFactory = AccountBuilder.getFactoryAccount("");
 
 	}
 
-	void exitApplication() {
+	private void exitApplication() {
 		try {
 			this.setVisible(false); // hide the Frame
 			this.dispose(); // free the system resources
@@ -126,11 +126,11 @@ public class FincoView extends javax.swing.JFrame {
 		}
 	}
 
-	void FincoFrm_windowClosing(java.awt.event.WindowEvent e) {
+	private void FincoFrm_windowClosing(java.awt.event.WindowEvent e) {
 		FincoFrm_windowClosing_Interaction(e);
 	}
 
-	void FincoFrm_windowClosing_Interaction(java.awt.event.WindowEvent event) {
+	private void FincoFrm_windowClosing_Interaction(java.awt.event.WindowEvent event) {
 		try {
 			this.exitApplication();
 		} catch (Exception e) {
@@ -155,7 +155,7 @@ public class FincoView extends javax.swing.JFrame {
 		}
 	}
 
-	void JButtonTransaction_actionPerformed(ActionEvent e) {
+	private void JButtonTransaction_actionPerformed(ActionEvent e) {
 		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 
 		if (selection >= 0) {
@@ -180,22 +180,22 @@ public class FincoView extends javax.swing.JFrame {
 		}
 	}
 
-	void JButtonGenReport_actionPerformed(ActionEvent e) {
+	private void JButtonGenReport_actionPerformed(ActionEvent e) {
 		GenerateReportView billFrm = new GenerateReportView(thisframe);
 		billFrm.setBounds(450, 20, 810, 350);
 		billFrm.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 		billFrm.show();
 	}
 
-	void JButtonAcc_actionPerformed(ActionEvent e) {
+	private void JButtonAcc_actionPerformed(ActionEvent e) {
 		AddAccountView fincoAcc = new AddAccountView(thisframe);
 		fincoAcc.setBounds(450, 20, 300, 300);
 		fincoAcc.setLocationRelativeTo(SwingUtilities.getWindowAncestor((Component) e.getSource()));
 		fincoAcc.show();
 
 		if (newaccount) {
-			ICustomer customer = factory.createCustomer(customerMap);
-			IAccount account = factory.createAccount(accountMap, customer);
+			ICustomer customer = customerAccountFactory.createCustomer(customerMap);
+			IAccount account = customerAccountFactory.createAccount(accountMap, customer);
 
 			finco.customerList.add(customer);
 			finco.accountsManager.addAccount(account);
@@ -209,11 +209,11 @@ public class FincoView extends javax.swing.JFrame {
 		}
 	}
 
-	void JButtonExit_actionPerformed(ActionEvent e) {
+	private void JButtonExit_actionPerformed(ActionEvent e) {
 		System.exit(0);
 	}
 
-	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
 		finco.accountsManager.updateAccountsInterest();
 
 		for (int i = 0; i < finco.accountsManager.getAccounts().size(); i++)
