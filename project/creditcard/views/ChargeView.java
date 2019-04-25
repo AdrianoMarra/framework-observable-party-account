@@ -4,13 +4,7 @@ import creditcard.models.Charge;
 import creditcard.models.ChargeProxy;
 import creditcard.models.CreditCardAccount;
 import creditcard.models.CreditCardTransaction;
-import creditcard.models.CreditCardTransactionManager;
-import framework.models.IAccount;
-import framework.models.ITransaction;
-import framework.models.ITransactionManager;
-import framework.models.TransactionManager;
-import framework.models.TransactionProxy;
-
+import creditcard.models.CreditCardTransactionManager; 
 import javax.swing.*;
 
 public class ChargeView extends javax.swing.JDialog {

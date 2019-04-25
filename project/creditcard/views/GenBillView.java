@@ -5,11 +5,12 @@ package creditcard.views;
 
 import java.awt.*;
 import java.util.Date;
-
-import framework.models.IAccount;
-import framework.models.ICustomer;
+ 
 
 import javax.swing.*;
+
+import creditcard.models.CreditCardAccount;
+import creditcard.models.Person;
 
 public class GenBillView extends javax.swing.JDialog {
 
@@ -40,11 +41,11 @@ public class GenBillView extends javax.swing.JDialog {
 		getContentPane().add(JButton_OK);
 		JButton_OK.setBounds(296, 276, 196, 24);
 		
- 		for (ICustomer customer : CardView.customersList) {
+ 		for (Person customer : CardView.customersList) {
 			reportString += "Name = " + customer.getName() + "\n";
 			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState()
 					+ "," + customer.getZip() + "\n";
-			for (IAccount account : customer.getAccountList())
+			for (CreditCardAccount account : customer.getCreditCardAccountList())
 				reportString += account.report(new Date()) + "\n";		
 			
 			reportString += "-----------------------------------\n";

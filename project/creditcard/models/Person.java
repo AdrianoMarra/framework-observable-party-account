@@ -1,12 +1,18 @@
 package creditcard.models;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import framework.models.Customer;
+import framework.models.IAccount;
 
-public class Person extends Customer {
+public class Person extends Customer 
+{
+	List<CreditCardAccount> creditCardAccountList = new ArrayList<>();
+	
     public Person(HashMap<String, String> customerData) {
         super(customerData);
     }
@@ -23,4 +29,9 @@ public class Person extends Customer {
     public String toString() {
         return super.toString();
     }
+    
+    
+	public List<CreditCardAccount> getCreditCardAccountList() {
+		return creditCardAccountList;
+	}
 }

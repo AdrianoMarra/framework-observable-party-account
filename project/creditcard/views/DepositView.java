@@ -88,10 +88,7 @@ public class DepositView extends javax.swing.JDialog {
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-//		CreditCardTransaction transaction = new Charge(acc, Double.parseDouble(JTextField_AMT.getText())); 	
-// 		transaction = new ChargeProxy(transaction, transaction.getAccount(), transaction.getAmount());
-// 		transactionManager.setTransaction(transaction);
-// 		transactionManager.execute();
+ 
  		
         CreditCardTransaction transaction = new Deposit(acc, Double.parseDouble(JTextField_Deposit.getText())); 
         transactionManager.setTransaction(transaction);
