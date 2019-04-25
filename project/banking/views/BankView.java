@@ -176,15 +176,15 @@ public class BankView extends javax.swing.JFrame {
 			if (object == JButton_Exit)
 				JButtonExit_actionPerformed(event);
 			else if (object == JButton_PerAC)
-				JButtonPerAC_actionPerformed(event);
+				addPersonalAccount(event);
 			else if (object == JButton_CompAC)
-				JButtonCompAC_actionPerformed(event);
+				addCompanyAccount(event);
 			else if (object == JButton_Deposit)
-				JButtonDeposit_actionPerformed(event);
+				deposit(event);
 			else if (object == JButton_Withdraw)
-				JButtonWithdraw_actionPerformed(event);
+				withdraw(event);
 			else if (object == JButton_Addinterest)
-				JButtonAddinterest_actionPerformed(event);
+				addInterest(event);
 		}
 	}
 
@@ -194,7 +194,7 @@ public class BankView extends javax.swing.JFrame {
 		System.exit(0);
 	}
 
-	private void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event) {
+	private void addPersonalAccount(java.awt.event.ActionEvent event) {
 		/*
 		 * JDialog_AddPAcc type object is for adding personal information construct a
 		 * JDialog_AddPAcc type object set the boundaries and show it
@@ -235,7 +235,7 @@ public class BankView extends javax.swing.JFrame {
 		}
 	}
 
-	private void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event) {
+	private void addCompanyAccount(java.awt.event.ActionEvent event) {
 		/*
 		 * construct a JDialog_AddCompAcc type object set the boundaries and show it
 		 */
@@ -274,7 +274,7 @@ public class BankView extends javax.swing.JFrame {
 
 	}
 
-	private void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event) {
+	private void deposit(java.awt.event.ActionEvent event) {
 		// get selected name
 		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 
@@ -296,7 +296,7 @@ public class BankView extends javax.swing.JFrame {
 		}
 	}
 
-	private void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event) {
+	private void withdraw(java.awt.event.ActionEvent event) {
 		// get selected name
 		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 
@@ -318,7 +318,7 @@ public class BankView extends javax.swing.JFrame {
 		}
 	}
 
-	private void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
+	private void addInterest(java.awt.event.ActionEvent event) {
 		bank.accountsManager.updateAccountsInterest();
 		for (int i = 0; i < bank.accountsManager.getListAccounts().size(); i++) {
 			Double newBalance = bank.accountsManager.getListAccounts().get(i).getBalance();
