@@ -16,8 +16,6 @@ import framework.views.FincoView;
 
 public class bank extends finco {
 
-//	private List<BankCustomer> customers = new ArrayList<>();
-//	private BankInterestManager accountsManager = new BankInterestManager();
 	public static BankInterestManager accountsManager = new BankInterestManager();
 	public static List<BankCustomer> customers = new ArrayList<>();
 
