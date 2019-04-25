@@ -16,13 +16,13 @@ public class TransactionView extends JDialog {
 	private String name;
 	private IAccount acc;
 
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-	javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
-	ITransactionManager transactionManager = new TransactionManager();
+	private javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
+	private javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
+	private javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+	private javax.swing.JButton JButton_OK = new javax.swing.JButton();
+	private javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
+	private javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
+	private ITransactionManager transactionManager = new TransactionManager();
 
 	public TransactionView(FincoView parent, String name, IAccount acc) 
 	{
@@ -76,7 +76,7 @@ public class TransactionView extends JDialog {
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
  		ITransaction transaction = new Transaction(acc, Double.parseDouble(JTextField_Deposit.getText())); 	
  		transaction = new TransactionProxy(transaction);
  		transactionManager.setTransaction(transaction);
@@ -85,7 +85,7 @@ public class TransactionView extends JDialog {
 		dispose();
 	}
 
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
 		dispose();
 	}
 

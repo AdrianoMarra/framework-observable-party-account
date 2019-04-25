@@ -7,7 +7,7 @@ import creditcard.models.CreditCardFactory;
 import creditcard.models.Person;
 import framework.models.IAccount;
 import framework.models.ICustomer;
-import framework.models.IFactory;
+import framework.models.ICustomerAccountFactory;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
