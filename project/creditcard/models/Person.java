@@ -23,6 +23,10 @@ public class Person extends Customer
         st.append(this.toString());
         return st.toString();
     }
+    
+ 	public void addCreditCardAccountAccount(CreditCardAccount acc) {
+ 		creditCardAccountList.add(acc);
+	}
 
 
     @Override

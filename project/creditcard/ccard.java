@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.UIManager;
- 
+
+import creditcard.models.CreditCardAccount;
+import creditcard.models.Person;
 import creditcard.views.CardView;
 import framework.finco;
 import framework.models.Customer;
@@ -14,8 +16,8 @@ import framework.models.InterestManager;
 
 public class ccard extends finco {
 
-	public static List<IAccount> accountsList = new ArrayList<>();
-	public static List<ICustomer> customersList = new ArrayList<>();
+	public static List<CreditCardAccount> accountsList = new ArrayList<>();
+	public static List<Person> customersList = new ArrayList<>();
 
 	public static void main(String[] args) {
 		try {

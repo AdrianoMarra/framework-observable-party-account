@@ -9,6 +9,7 @@ import java.util.Date;
 
 import javax.swing.*;
 
+import creditcard.ccard;
 import creditcard.models.CreditCardAccount;
 import creditcard.models.Person;
 
@@ -40,8 +41,8 @@ public class GenBillView extends javax.swing.JDialog {
 		JButton_OK.setActionCommand("OK");
 		getContentPane().add(JButton_OK);
 		JButton_OK.setBounds(296, 276, 196, 24);
+		for (Person customer : ccard.customersList) {
 		
- 		for (Person customer : CardView.customersList) {
 			reportString += "Name = " + customer.getName() + "\n";
 			reportString += "Address = " + customer.getStreet() + "," + customer.getCity() + "," + customer.getState()
 					+ "," + customer.getZip() + "\n";

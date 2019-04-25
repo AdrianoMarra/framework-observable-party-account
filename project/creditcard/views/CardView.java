@@ -1,5 +1,6 @@
 package creditcard.views;
 
+import creditcard.ccard;
 import creditcard.models.CardCustomerAccountBuilder;
 import creditcard.models.CreditCardAccount;
 import creditcard.models.CreditCardFactory;
@@ -22,9 +23,7 @@ public class CardView extends javax.swing.JFrame {
     protected HashMap<String, String> customData = new HashMap<>();
     private String interest = "0.0";
     protected boolean newaccount;
-    private static boolean debug = true;
-    private static List<CreditCardAccount> accountsList = new ArrayList<>();
-    protected static List<Person> customersList = new ArrayList<>();
+    private static boolean debug = true; 
     private CardView thisframe;
     protected String accountType;
     private static CreditCardFactory currentFactory;
@@ -174,8 +173,9 @@ public class CardView extends javax.swing.JFrame {
                 default:
                     break;
             }
-            customersList.add(customer);
-            accountsList.add(account);
+            customer.addCreditCardAccountAccount(account);
+            ccard.customersList.add(customer);            
+            ccard.accountsList.add(account);
             model.addRow(
                     new Object[]{customer.getName(), account.getAccNumber(), customer.getEmail(), formated, "0"});
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
@@ -196,7 +196,7 @@ public class CardView extends javax.swing.JFrame {
         if (selection >= 0) {
             String name = (String) model.getValueAt(selection, 0);
             String accNumber = (String) model.getValueAt(selection, 1);
-            CreditCardAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+            CreditCardAccount found = ccard.accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
                     .orElse(null);
             // Show the dialog for adding deposit amount for the current mane
             DepositView dep = new DepositView(thisframe, name, found);
@@ -215,7 +215,7 @@ public class CardView extends javax.swing.JFrame {
         if (selection >= 0) {
             String name = (String) model.getValueAt(selection, 0);
             String accNumber = (String) model.getValueAt(selection, 1);
-            CreditCardAccount found = accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
+            CreditCardAccount found = ccard.accountsList.stream().filter(x -> x.getAccNumber().equals(accNumber)).findFirst()
                     .orElse(null);
             // Show the dialog for adding withdraw amount for the current mane
             ChargeView wd = new ChargeView(thisframe, name, found);
