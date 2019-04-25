@@ -7,7 +7,7 @@ import framework.models.IFactory;
 
 public class AddAccountView extends javax.swing.JDialog {
 
-	private FincoFrm parentFrame;
+	private FincoView parentFrame;
 
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
@@ -26,7 +26,7 @@ public class AddAccountView extends javax.swing.JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 
-	public AddAccountView(FincoFrm thisframe) {
+	public AddAccountView(FincoView thisframe) {
 		super(thisframe);
 		parentFrame = thisframe;
 

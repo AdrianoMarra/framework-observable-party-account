@@ -7,7 +7,7 @@ import javax.swing.UIManager;
 
 import framework.models.ICustomer;
 import framework.models.InterestManager;
-import framework.views.FincoFrm;
+import framework.views.FincoView;
 
 public class finco {
 
@@ -23,7 +23,7 @@ public class finco {
 			}
 
 			// Create a new instance of our application's frame, and make it visible.
-			(new FincoFrm()).setVisible(true);
+			(new FincoView()).setVisible(true);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			// Ensure the application exits with an error condition.

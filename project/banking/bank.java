@@ -12,7 +12,7 @@ import creditcard.ccard;
 import framework.finco;
 import framework.models.Customer;
 import framework.models.InterestManager;
-import framework.views.FincoFrm;
+import framework.views.FincoView;
 
 public class bank extends finco {
 
