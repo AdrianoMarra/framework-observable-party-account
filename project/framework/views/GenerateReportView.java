@@ -15,7 +15,7 @@ public class GenerateReportView extends JDialog {
 	javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	String reportString = "";
 
-	public GenerateReportView(FincoFrm parent) {
+	public GenerateReportView(FincoView parent) {
 		super(parent);
 		getContentPane().setLayout(null);
 		setSize(405, 367);

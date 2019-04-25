@@ -173,8 +173,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="framework.views.FincoFrm" project="framework-observable-party-account" 
-    file="/framework-observable-party-account/project/framework/views/FincoFrm.java" binary="false" 
+  <class id="18" language="java" name="framework.views.FincoView" project="framework-observable-party-account" 
+    file="/framework-observable-party-account/project/framework/views/FincoView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3340" y="541"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

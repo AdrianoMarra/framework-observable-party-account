@@ -20,7 +20,7 @@ import framework.models.IAccount;
 import framework.models.ICustomer;
 import framework.models.IFactory;
 
-public class FincoFrm extends javax.swing.JFrame {
+public class FincoView extends javax.swing.JFrame {
 
 	boolean newaccount;
 	double amountDeposit;
@@ -30,7 +30,7 @@ public class FincoFrm extends javax.swing.JFrame {
 	private JTable JTable1;
 	private JScrollPane JScrollPane1;
 	private DefaultTableModel model;
-	FincoFrm thisframe;
+	FincoView thisframe;
 	private Object rowdata[];
 	private IFactory factory;
 
@@ -41,7 +41,7 @@ public class FincoFrm extends javax.swing.JFrame {
 	private javax.swing.JButton JButton_Exit = new javax.swing.JButton();
 	private javax.swing.JButton JButton_Addinterest = new javax.swing.JButton();
 
-	public FincoFrm() {
+	public FincoView() {
 		thisframe = this;
 
 		// set configuration form financial application
@@ -121,7 +121,7 @@ public class FincoFrm extends javax.swing.JFrame {
 	class SymWindow extends java.awt.event.WindowAdapter {
 		public void windowClosing(WindowEvent e) {
 			Object object = e.getSource();
-			if (object == FincoFrm.this)
+			if (object == FincoView.this)
 				FincoFrm_windowClosing(e);
 		}
 	}
@@ -234,7 +234,7 @@ public class FincoFrm extends javax.swing.JFrame {
 			}
 
 			// Create a new instance of our application's frame, and make it visible.
-			(new FincoFrm()).setVisible(true);
+			(new FincoView()).setVisible(true);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			// Ensure the application exits with an error condition.
